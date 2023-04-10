@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4510A37729E3A5E4004F7EBA /* CarouselCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4510A37529E3A5E4004F7EBA /* CarouselCollectionCell.swift */; };
+		4510A37829E3A5E4004F7EBA /* CarouselCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4510A37629E3A5E4004F7EBA /* CarouselCollectionCell.xib */; };
+		4510A37A29E3A754004F7EBA /* CarouselTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4510A37929E3A754004F7EBA /* CarouselTableCell.swift */; };
 		4516E80B29DE59E50031FE52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4516E80A29DE59E50031FE52 /* AppDelegate.swift */; };
 		4516E80D29DE59E50031FE52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4516E80C29DE59E50031FE52 /* SceneDelegate.swift */; };
-		4516E80F29DE59E50031FE52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4516E80E29DE59E50031FE52 /* ViewController.swift */; };
 		4516E81229DE59E50031FE52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4516E81029DE59E50031FE52 /* Main.storyboard */; };
 		4516E81429DE59E80031FE52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4516E81329DE59E80031FE52 /* Assets.xcassets */; };
 		4516E81729DE59E80031FE52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4516E81529DE59E80031FE52 /* LaunchScreen.storyboard */; };
 		4516E82229DE59E90031FE52 /* FinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4516E82129DE59E90031FE52 /* FinalProjectTests.swift */; };
 		4516E82C29DE59E90031FE52 /* FinalProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4516E82B29DE59E90031FE52 /* FinalProjectUITests.swift */; };
 		4516E82E29DE59E90031FE52 /* FinalProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4516E82D29DE59E90031FE52 /* FinalProjectUITestsLaunchTests.swift */; };
+		4516E84129DE5B970031FE52 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4516E84029DE5B970031FE52 /* HomeViewModel.swift */; };
+		4516E84429DE63C50031FE52 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4516E84229DE63C50031FE52 /* HomeViewController.swift */; };
+		4516E84529DE63C50031FE52 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4516E84329DE63C50031FE52 /* HomeViewController.xib */; };
+		45B623C029E3981E00DCB9F6 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B623BF29E3981E00DCB9F6 /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4510A37529E3A5E4004F7EBA /* CarouselCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionCell.swift; sourceTree = "<group>"; };
+		4510A37629E3A5E4004F7EBA /* CarouselCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionCell.xib; sourceTree = "<group>"; };
+		4510A37929E3A754004F7EBA /* CarouselTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselTableCell.swift; sourceTree = "<group>"; };
 		4516E80729DE59E40031FE52 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4516E80A29DE59E50031FE52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4516E80C29DE59E50031FE52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4516E80E29DE59E50031FE52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4516E81129DE59E50031FE52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4516E81329DE59E80031FE52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4516E81629DE59E80031FE52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +57,10 @@
 		4516E82729DE59E90031FE52 /* FinalProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4516E82B29DE59E90031FE52 /* FinalProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectUITests.swift; sourceTree = "<group>"; };
 		4516E82D29DE59E90031FE52 /* FinalProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4516E84029DE5B970031FE52 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		4516E84229DE63C50031FE52 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4516E84329DE63C50031FE52 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		45B623BF29E3981E00DCB9F6 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +88,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4510A37329E3A4D6004F7EBA /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				4510A37429E3A589004F7EBA /* CollectionView */,
+				4510A37929E3A754004F7EBA /* CarouselTableCell.swift */,
+			);
+			path = Carousel;
+			sourceTree = "<group>";
+		};
+		4510A37429E3A589004F7EBA /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				4510A37529E3A5E4004F7EBA /* CarouselCollectionCell.swift */,
+				4510A37629E3A5E4004F7EBA /* CarouselCollectionCell.xib */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		4516E7FE29DE59E40031FE52 = {
 			isa = PBXGroup;
 			children = (
@@ -99,12 +129,10 @@
 		4516E80929DE59E40031FE52 /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
-				4516E80A29DE59E50031FE52 /* AppDelegate.swift */,
-				4516E80C29DE59E50031FE52 /* SceneDelegate.swift */,
-				4516E80E29DE59E50031FE52 /* ViewController.swift */,
-				4516E81029DE59E50031FE52 /* Main.storyboard */,
-				4516E81329DE59E80031FE52 /* Assets.xcassets */,
-				4516E81529DE59E80031FE52 /* LaunchScreen.storyboard */,
+				4516E84729DE677E0031FE52 /* Core */,
+				4516E83D29DE5A890031FE52 /* Storyboards */,
+				4516E83C29DE5A7F0031FE52 /* Helper */,
+				4516E83A29DE5A5B0031FE52 /* Modules */,
 				4516E81829DE59E80031FE52 /* Info.plist */,
 			);
 			path = FinalProject;
@@ -125,6 +153,76 @@
 				4516E82D29DE59E90031FE52 /* FinalProjectUITestsLaunchTests.swift */,
 			);
 			path = FinalProjectUITests;
+			sourceTree = "<group>";
+		};
+		4516E83A29DE5A5B0031FE52 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				4516E83B29DE5A720031FE52 /* Home Page */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		4516E83B29DE5A720031FE52 /* Home Page */ = {
+			isa = PBXGroup;
+			children = (
+				4516E83F29DE5B220031FE52 /* View */,
+				4516E83E29DE5B180031FE52 /* ViewModel */,
+			);
+			path = "Home Page";
+			sourceTree = "<group>";
+		};
+		4516E83C29DE5A7F0031FE52 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4516E81329DE59E80031FE52 /* Assets.xcassets */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		4516E83D29DE5A890031FE52 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				4516E81029DE59E50031FE52 /* Main.storyboard */,
+				4516E81529DE59E80031FE52 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		4516E83E29DE5B180031FE52 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4516E84029DE5B970031FE52 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4516E83F29DE5B220031FE52 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4516E86829DE758E0031FE52 /* Cells */,
+				4516E84229DE63C50031FE52 /* HomeViewController.swift */,
+				4516E84329DE63C50031FE52 /* HomeViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4516E84729DE677E0031FE52 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4516E80A29DE59E50031FE52 /* AppDelegate.swift */,
+				4516E80C29DE59E50031FE52 /* SceneDelegate.swift */,
+				45B623BF29E3981E00DCB9F6 /* TabBar.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4516E86829DE758E0031FE52 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4510A37329E3A4D6004F7EBA /* Carousel */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +330,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4516E81729DE59E80031FE52 /* LaunchScreen.storyboard in Resources */,
+				4510A37829E3A5E4004F7EBA /* CarouselCollectionCell.xib in Resources */,
 				4516E81429DE59E80031FE52 /* Assets.xcassets in Resources */,
 				4516E81229DE59E50031FE52 /* Main.storyboard in Resources */,
+				4516E84529DE63C50031FE52 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +358,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4516E80F29DE59E50031FE52 /* ViewController.swift in Sources */,
+				4510A37A29E3A754004F7EBA /* CarouselTableCell.swift in Sources */,
 				4516E80B29DE59E50031FE52 /* AppDelegate.swift in Sources */,
+				4510A37729E3A5E4004F7EBA /* CarouselCollectionCell.swift in Sources */,
 				4516E80D29DE59E50031FE52 /* SceneDelegate.swift in Sources */,
+				4516E84129DE5B970031FE52 /* HomeViewModel.swift in Sources */,
+				4516E84429DE63C50031FE52 /* HomeViewController.swift in Sources */,
+				45B623C029E3981E00DCB9F6 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
