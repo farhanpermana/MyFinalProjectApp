@@ -52,8 +52,6 @@ class HomeViewController: UIViewController {
                 action: nil
             )
         ]
-        
-        
     }
     
 }
@@ -64,11 +62,27 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CarouselTableCell.identifier, for: indexPath) as? CarouselTableCell else {
+        let section = HomeSection(rawValue: indexPath.section)
+        switch section {
+        case .carousel:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CarouselTableCell.identifier, for: indexPath) as? CarouselTableCell else {
+                return UITableViewCell()
+            }
+            cell.setupTable()
+            return cell
+        default:
             return UITableViewCell()
         }
-        cell.setupTable()
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = HomeSection(rawValue: indexPath.section)
+        switch section {
+        case .carousel:
+            return 150
+        default:
+            return 0
+        }
     }
     
     
