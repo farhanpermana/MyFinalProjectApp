@@ -10,6 +10,8 @@
 		4510A37729E3A5E4004F7EBA /* CarouselCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4510A37529E3A5E4004F7EBA /* CarouselCollectionCell.swift */; };
 		4510A37829E3A5E4004F7EBA /* CarouselCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4510A37629E3A5E4004F7EBA /* CarouselCollectionCell.xib */; };
 		4510A37A29E3A754004F7EBA /* CarouselTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4510A37929E3A754004F7EBA /* CarouselTableCell.swift */; };
+		4510A37E29E3C322004F7EBA /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4510A37C29E3C322004F7EBA /* LoginController.swift */; };
+		4510A37F29E3C322004F7EBA /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4510A37D29E3C322004F7EBA /* LoginController.xib */; };
 		4516E80B29DE59E50031FE52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4516E80A29DE59E50031FE52 /* AppDelegate.swift */; };
 		4516E80D29DE59E50031FE52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4516E80C29DE59E50031FE52 /* SceneDelegate.swift */; };
 		4516E81229DE59E50031FE52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4516E81029DE59E50031FE52 /* Main.storyboard */; };
@@ -45,6 +47,8 @@
 		4510A37529E3A5E4004F7EBA /* CarouselCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionCell.swift; sourceTree = "<group>"; };
 		4510A37629E3A5E4004F7EBA /* CarouselCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionCell.xib; sourceTree = "<group>"; };
 		4510A37929E3A754004F7EBA /* CarouselTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselTableCell.swift; sourceTree = "<group>"; };
+		4510A37C29E3C322004F7EBA /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		4510A37D29E3C322004F7EBA /* LoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
 		4516E80729DE59E40031FE52 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4516E80A29DE59E50031FE52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4516E80C29DE59E50031FE52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +110,15 @@
 			path = CollectionView;
 			sourceTree = "<group>";
 		};
+		4510A37B29E3BE9C004F7EBA /* Login Page */ = {
+			isa = PBXGroup;
+			children = (
+				4510A37C29E3C322004F7EBA /* LoginController.swift */,
+				4510A37D29E3C322004F7EBA /* LoginController.xib */,
+			);
+			path = "Login Page";
+			sourceTree = "<group>";
+		};
 		4516E7FE29DE59E40031FE52 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +171,7 @@
 		4516E83A29DE5A5B0031FE52 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4510A37B29E3BE9C004F7EBA /* Login Page */,
 				4516E83B29DE5A720031FE52 /* Home Page */,
 			);
 			path = Modules;
@@ -330,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4516E81729DE59E80031FE52 /* LaunchScreen.storyboard in Resources */,
+				4510A37F29E3C322004F7EBA /* LoginController.xib in Resources */,
 				4510A37829E3A5E4004F7EBA /* CarouselCollectionCell.xib in Resources */,
 				4516E81429DE59E80031FE52 /* Assets.xcassets in Resources */,
 				4516E81229DE59E50031FE52 /* Main.storyboard in Resources */,
@@ -363,6 +378,7 @@
 				4510A37729E3A5E4004F7EBA /* CarouselCollectionCell.swift in Sources */,
 				4516E80D29DE59E50031FE52 /* SceneDelegate.swift in Sources */,
 				4516E84129DE5B970031FE52 /* HomeViewModel.swift in Sources */,
+				4510A37E29E3C322004F7EBA /* LoginController.swift in Sources */,
 				4516E84429DE63C50031FE52 /* HomeViewController.swift in Sources */,
 				45B623C029E3981E00DCB9F6 /* TabBar.swift in Sources */,
 			);

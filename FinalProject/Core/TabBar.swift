@@ -11,13 +11,14 @@ class TabBar: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupVC()
     }
     
     func setupVC() {
         viewControllers = [
-            createNavController(viewController: HomeViewController(), title: "Home", image: UIImage(systemName: "house")!)
+            createNavController(viewController: HomeViewController(), title: "Home", image: UIImage(systemName: "house")!),
+            createNavController(viewController: HomeViewController(), title: "Profile", image: UIImage(systemName: "person")!),
+            
         ]
         
         
