@@ -22,6 +22,9 @@
 		4516E84429DE63C50031FE52 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4516E84229DE63C50031FE52 /* HomeViewController.swift */; };
 		4516E84529DE63C50031FE52 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4516E84329DE63C50031FE52 /* HomeViewController.xib */; };
 		45B623C029E3981E00DCB9F6 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B623BF29E3981E00DCB9F6 /* TabBar.swift */; };
+		D71E9BDC29E4ECCD00F26F68 /* CatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E9BDB29E4ECCD00F26F68 /* CatTableCell.swift */; };
+		D71E9BE029E4EDDD00F26F68 /* CatCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71E9BDE29E4EDDD00F26F68 /* CatCollectionCell.swift */; };
+		D71E9BE129E4EDDD00F26F68 /* CatCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D71E9BDF29E4EDDD00F26F68 /* CatCollectionCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		4516E84229DE63C50031FE52 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4516E84329DE63C50031FE52 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		45B623BF29E3981E00DCB9F6 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		D71E9BDB29E4ECCD00F26F68 /* CatTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatTableCell.swift; sourceTree = "<group>"; };
+		D71E9BDE29E4EDDD00F26F68 /* CatCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCollectionCell.swift; sourceTree = "<group>"; };
+		D71E9BDF29E4EDDD00F26F68 /* CatCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatCollectionCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,9 +232,20 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		D71E9BDD29E4ED2C00F26F68 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				D71E9BDE29E4EDDD00F26F68 /* CatCollectionCell.swift */,
+				D71E9BDF29E4EDDD00F26F68 /* CatCollectionCell.xib */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		D751C61D29E42FCB00F9EF03 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				D71E9BDD29E4ED2C00F26F68 /* CollectionView */,
+				D71E9BDB29E4ECCD00F26F68 /* CatTableCell.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -339,6 +356,7 @@
 			files = (
 				4516E81729DE59E80031FE52 /* LaunchScreen.storyboard in Resources */,
 				4510A37829E3A5E4004F7EBA /* CarouselCollectionCell.xib in Resources */,
+				D71E9BE129E4EDDD00F26F68 /* CatCollectionCell.xib in Resources */,
 				4516E81429DE59E80031FE52 /* Assets.xcassets in Resources */,
 				4516E81229DE59E50031FE52 /* Main.storyboard in Resources */,
 				4516E84529DE63C50031FE52 /* HomeViewController.xib in Resources */,
@@ -366,11 +384,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D71E9BE029E4EDDD00F26F68 /* CatCollectionCell.swift in Sources */,
 				4510A37A29E3A754004F7EBA /* CarouselTableCell.swift in Sources */,
 				4516E80B29DE59E50031FE52 /* AppDelegate.swift in Sources */,
 				4510A37729E3A5E4004F7EBA /* CarouselCollectionCell.swift in Sources */,
 				4516E80D29DE59E50031FE52 /* SceneDelegate.swift in Sources */,
 				4516E84129DE5B970031FE52 /* HomeViewModel.swift in Sources */,
+				D71E9BDC29E4ECCD00F26F68 /* CatTableCell.swift in Sources */,
 				4516E84429DE63C50031FE52 /* HomeViewController.swift in Sources */,
 				45B623C029E3981E00DCB9F6 /* TabBar.swift in Sources */,
 			);

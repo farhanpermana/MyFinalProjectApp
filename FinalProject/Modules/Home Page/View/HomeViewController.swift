@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
     
     private func registerTableView() {
         tableView.register(CarouselTableCell.self, forCellReuseIdentifier: CarouselTableCell.identifier)
+        tableView.register(CatTableCell.self, forCellReuseIdentifier: CatTableCell.identifier)
         
         
         tableView.delegate = self
@@ -61,11 +62,21 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = HomeSection(rawValue: indexPath.section)
         switch section {
         case .carousel:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CarouselTableCell.identifier, for: indexPath) as? CarouselTableCell else {
+                return UITableViewCell()
+            }
+            cell.setupTable()
+            return cell
+        case .categories:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CatTableCell.identifier, for: indexPath) as? CatTableCell else {
                 return UITableViewCell()
             }
             cell.setupTable()
@@ -80,6 +91,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case .carousel:
             return 150
+        case .categories:
+            return 200
         default:
             return 0
         }
