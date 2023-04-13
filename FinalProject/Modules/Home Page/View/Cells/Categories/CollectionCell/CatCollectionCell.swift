@@ -27,7 +27,7 @@ class CatCollectionCell: UICollectionViewCell {
     func setupCell() {
         self.layer.cornerRadius = 10
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.red.cgColor
+        self.layer.borderColor = UIColor.gray.cgColor
     
         
     }

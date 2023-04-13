@@ -29,11 +29,11 @@ class CatTableCell: UITableViewCell {
     func setupLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
     
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        layout.minimumInteritemSpacing = 12
+        layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+        layout.minimumInteritemSpacing = 1
         let screenSize = self.bounds.width - layout.sectionInset.left -
         layout.sectionInset.right - layout.minimumInteritemSpacing
-        layout.itemSize = CGSize(width: screenSize / 3, height: 80)
+        layout.itemSize = CGSize(width: screenSize / 4.5, height: 80)
         return layout
     }
     
@@ -75,12 +75,6 @@ extension CatTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlow
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        6
     }
-    
-  
-    
-   
-    
-    
 }

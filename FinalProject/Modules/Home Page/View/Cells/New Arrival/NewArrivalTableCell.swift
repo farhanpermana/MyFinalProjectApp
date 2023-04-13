@@ -1,15 +1,15 @@
 //
-//  CarouselTableCell.swift
+//  NewArrivalTableCell.swift
 //  FinalProject
 //
-//  Created by Farhan on 10/04/23.
+//  Created by Farhan Permana on 11/04/23.
 //
 
 import UIKit
 
-class CarouselTableCell: UITableViewCell {
+class NewArrivalTableCell: UITableViewCell {
     
-    static let identifier = "CarouselTableCell"
+    static let identifier = "NewArrivalTableCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,10 +18,11 @@ class CarouselTableCell: UITableViewCell {
     
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
+
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UINib(nibName: "CarouselCollectionCell", bundle: nil), forCellWithReuseIdentifier: CarouselCollectionCell.identifier)
-        collectionView.layer.masksToBounds = false
+        collectionView.register(UINib(nibName: "NewArrivalCollectionCell", bundle: nil), forCellWithReuseIdentifier: NewArrivalCollectionCell.identifier)
+        collectionView.layer.masksToBounds = true
 //        collectionView.backgroundColor = .green
 
         return collectionView
@@ -46,6 +47,7 @@ class CarouselTableCell: UITableViewCell {
         collectionView.dataSource = self
     }
 
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -54,24 +56,24 @@ class CarouselTableCell: UITableViewCell {
 
 }
 
-extension CarouselTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension NewArrivalTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCollectionCell.identifier, for: indexPath) as? CarouselCollectionCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewArrivalCollectionCell.identifier, for: indexPath) as? NewArrivalCollectionCell else {
         return UICollectionViewCell()
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+        return UIEdgeInsets(top: 5, left: 16, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2, height: 100)
+        return CGSize(width: collectionView.frame.width / 3, height: 300)
     }
     
     

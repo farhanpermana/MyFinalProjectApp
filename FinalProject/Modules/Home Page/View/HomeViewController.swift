@@ -11,6 +11,7 @@ enum HomeSection: Int {
     case carousel = 0
     case categories = 1
     case popular = 2
+    case newarrival = 3
     
 }
 
@@ -27,32 +28,25 @@ class HomeViewController: UIViewController {
     private func registerTableView() {
         tableView.register(CarouselTableCell.self, forCellReuseIdentifier: CarouselTableCell.identifier)
         tableView.register(CatTableCell.self, forCellReuseIdentifier: CatTableCell.identifier)
+        tableView.register(NewArrivalTableCell.self, forCellReuseIdentifier: NewArrivalTableCell.identifier)
         
         
         tableView.delegate = self
         tableView.dataSource = self
     }
     
+    lazy var searchBar: UISearchBar = UISearchBar(frame: CGRectMake(0, 0, view.bounds.width, 20))
+    
     private func configureNavBar() {
         navigationController?.navigationBar.tintColor = .label
         navigationItem.title = nil
         navigationController?.navigationBar.prefersLargeTitles = false
         
-        // navbar items
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(
-                image: UIImage(systemName: "line.horizontal.3"),
-                style: .plain,
-                target: self,
-                action: nil
-            ),
-            UIBarButtonItem(
-                image: UIImage(systemName: "magnifyingglass"),
-                style: .plain,
-                target: self,
-                action: nil
-            )
-        ]
+        searchBar.placeholder = "Search"
+        
+        let leftNavBarButton = UIBarButtonItem(customView: searchBar)
+        self.navigationItem.leftBarButtonItem = leftNavBarButton
+
     }
     
 }
@@ -63,7 +57,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        // different sections using switch
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,6 +76,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             }
             cell.setupTable()
             return cell
+        case .newarrival:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: NewArrivalTableCell.identifier, for: indexPath) as? NewArrivalTableCell else {
+                return UITableViewCell()
+            }
+            cell.setupTable()
+            return cell
         default:
             return UITableViewCell()
         }
@@ -90,9 +91,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let section = HomeSection(rawValue: indexPath.section)
         switch section {
         case .carousel:
-            return 150
+            return 120
         case .categories:
             return 200
+        case .newarrival:
+            return 700
         default:
             return 0
         }

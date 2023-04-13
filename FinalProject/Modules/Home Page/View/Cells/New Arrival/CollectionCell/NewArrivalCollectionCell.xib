@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="NewArrivalCollectionCell" customModule="FinalProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="151" height="267"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="151" height="267"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diE-7S-fqq">
+                        <rect key="frame" x="0.0" y="0.0" width="151" height="267"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vogue" translatesAutoresizingMaskIntoConstraints="NO" id="1eU-Gs-JxZ">
+                                <rect key="frame" x="4" y="4" width="143" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="6c5-jX-VEx"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbh-cx-MP2">
+                                <rect key="frame" x="4" y="186" width="143" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiJ-Kv-9O3">
+                                <rect key="frame" x="4" y="205" width="143" height="14.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Baju vans asli garut" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39L-NO-mT2">
+                                <rect key="frame" x="4" y="241.66666666666666" width="143" height="14.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Baju Vans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-mM-B0z">
+                                <rect key="frame" x="4" y="223.33333333333334" width="143" height="14.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CiJ-Kv-9O3" firstAttribute="leading" secondItem="diE-7S-fqq" secondAttribute="leading" constant="4" id="50p-OX-AfU"/>
+                            <constraint firstAttribute="trailing" secondItem="CiJ-Kv-9O3" secondAttribute="trailing" constant="4" id="7cA-DQ-Yod"/>
+                            <constraint firstItem="1eU-Gs-JxZ" firstAttribute="leading" secondItem="diE-7S-fqq" secondAttribute="leading" constant="4" id="Sgj-Wk-wQr"/>
+                            <constraint firstItem="39L-NO-mT2" firstAttribute="top" secondItem="8eW-mM-B0z" secondAttribute="bottom" constant="4" id="T0C-vg-nXD"/>
+                            <constraint firstAttribute="trailing" secondItem="vbh-cx-MP2" secondAttribute="trailing" constant="4" id="Wh9-gK-1zV"/>
+                            <constraint firstAttribute="trailing" secondItem="1eU-Gs-JxZ" secondAttribute="trailing" constant="4" id="cXe-b0-Si7"/>
+                            <constraint firstAttribute="trailing" secondItem="39L-NO-mT2" secondAttribute="trailing" constant="4" id="hbX-wT-l0H"/>
+                            <constraint firstItem="39L-NO-mT2" firstAttribute="leading" secondItem="diE-7S-fqq" secondAttribute="leading" constant="4" id="kAq-cG-Czh"/>
+                            <constraint firstItem="CiJ-Kv-9O3" firstAttribute="top" secondItem="vbh-cx-MP2" secondAttribute="bottom" constant="4" id="m9W-Ht-pab"/>
+                            <constraint firstItem="vbh-cx-MP2" firstAttribute="leading" secondItem="diE-7S-fqq" secondAttribute="leading" constant="4" id="mgi-tG-UYy"/>
+                            <constraint firstAttribute="trailing" secondItem="8eW-mM-B0z" secondAttribute="trailing" constant="4" id="oBf-yz-TEG"/>
+                            <constraint firstItem="1eU-Gs-JxZ" firstAttribute="top" secondItem="diE-7S-fqq" secondAttribute="top" constant="4" id="oGf-2C-hZh"/>
+                            <constraint firstItem="vbh-cx-MP2" firstAttribute="top" secondItem="1eU-Gs-JxZ" secondAttribute="bottom" constant="12" id="oSB-5X-O3T"/>
+                            <constraint firstItem="8eW-mM-B0z" firstAttribute="top" secondItem="CiJ-Kv-9O3" secondAttribute="bottom" constant="4" id="sOl-xB-sx7"/>
+                            <constraint firstItem="8eW-mM-B0z" firstAttribute="leading" secondItem="diE-7S-fqq" secondAttribute="leading" constant="4" id="yId-Vs-ALe"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="diE-7S-fqq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Gms-Uh-ERW"/>
+                <constraint firstAttribute="bottom" secondItem="diE-7S-fqq" secondAttribute="bottom" id="Iuh-tC-ygD"/>
+                <constraint firstItem="diE-7S-fqq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="j8x-xc-JC2"/>
+                <constraint firstAttribute="trailing" secondItem="diE-7S-fqq" secondAttribute="trailing" id="rJq-MA-ER7"/>
+            </constraints>
+            <size key="customSize" width="151" height="267"/>
+            <connections>
+                <outlet property="productImg" destination="1eU-Gs-JxZ" id="XGj-L3-8m1"/>
+            </connections>
+            <point key="canvasLocation" x="156.4885496183206" y="96.126760563380287"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="vogue" width="640" height="801"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
