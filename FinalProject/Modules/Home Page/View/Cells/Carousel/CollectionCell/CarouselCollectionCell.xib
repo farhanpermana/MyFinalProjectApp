@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,30 +17,41 @@
                 <rect key="frame" x="0.0" y="0.0" width="237" height="130"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="BQ3-RU-ycX">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5zc-Fg-SjY">
                         <rect key="frame" x="0.0" y="0.0" width="237" height="130"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="MVE-CZ-BMh">
+                                <rect key="frame" x="1" y="1" width="235" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="130" id="NeR-L0-rzZ"/>
-                            <constraint firstAttribute="width" constant="237" id="Ny9-qu-wKi"/>
+                            <constraint firstAttribute="bottom" secondItem="MVE-CZ-BMh" secondAttribute="bottom" constant="1" id="5lR-1S-NcR"/>
+                            <constraint firstItem="MVE-CZ-BMh" firstAttribute="top" secondItem="5zc-Fg-SjY" secondAttribute="top" constant="1" id="Njw-6c-tZK"/>
+                            <constraint firstItem="MVE-CZ-BMh" firstAttribute="leading" secondItem="5zc-Fg-SjY" secondAttribute="leading" constant="1" id="RpI-wJ-NtD"/>
+                            <constraint firstAttribute="trailing" secondItem="MVE-CZ-BMh" secondAttribute="trailing" constant="1" id="nH3-N1-HSC"/>
                         </constraints>
-                    </imageView>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="BQ3-RU-ycX" secondAttribute="bottom" id="24U-3U-2WR"/>
-                <constraint firstItem="BQ3-RU-ycX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="43u-9C-V0c"/>
-                <constraint firstAttribute="trailing" secondItem="BQ3-RU-ycX" secondAttribute="trailing" id="COv-Yb-Fi3"/>
-                <constraint firstItem="BQ3-RU-ycX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WKG-gL-tWF"/>
+                <constraint firstAttribute="trailing" secondItem="5zc-Fg-SjY" secondAttribute="trailing" id="ZJ4-Ic-IKB"/>
+                <constraint firstItem="5zc-Fg-SjY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aEV-0c-IRk"/>
+                <constraint firstItem="5zc-Fg-SjY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gZ1-dO-fTv"/>
+                <constraint firstAttribute="bottom" secondItem="5zc-Fg-SjY" secondAttribute="bottom" id="qFQ-X0-Egj"/>
             </constraints>
             <size key="customSize" width="237" height="130"/>
             <connections>
-                <outlet property="imgView" destination="BQ3-RU-ycX" id="H77-zT-Gcz"/>
+                <outlet property="imgView" destination="MVE-CZ-BMh" id="RtC-p2-jTf"/>
             </connections>
             <point key="canvasLocation" x="225.19083969465649" y="106.33802816901409"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="banner" width="1024" height="500"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

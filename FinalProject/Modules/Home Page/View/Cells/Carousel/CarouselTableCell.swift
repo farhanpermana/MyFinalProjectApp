@@ -10,7 +10,10 @@ import UIKit
 class CarouselTableCell: UITableViewCell {
     
     static let identifier = "CarouselTableCell"
-
+    
+    // make property of storemodel
+    var carouselDatas: StoreModel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -56,13 +59,16 @@ class CarouselTableCell: UITableViewCell {
 
 extension CarouselTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return carouselDatas?.carousel.carousels.count ?? 0
+    
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCollectionCell.identifier, for: indexPath) as? CarouselCollectionCell else {
         return UICollectionViewCell()
         }
+        cell.setupCell()
+        cell.configureCarouselCell(data: carouselDatas?.carousel)
         return cell
     }
     
