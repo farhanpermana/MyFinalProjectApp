@@ -19,9 +19,7 @@ class ApiService: ApiServiceProtocol {
     }
     
     func callAPI<T>(model: T.Type, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable, T : Encodable {
-        guard let url = self.url else {
-            return
-        }
+        guard let url = self.url else {return}
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))
