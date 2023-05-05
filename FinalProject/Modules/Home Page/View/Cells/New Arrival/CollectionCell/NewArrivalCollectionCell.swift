@@ -24,6 +24,9 @@ class NewArrivalCollectionCell: UICollectionViewCell {
     }
     
     func setupCell() {
+        // wrap text
+        titleLabel.numberOfLines = 1
+        subTitleLabel.numberOfLines = 2
 
     }
     

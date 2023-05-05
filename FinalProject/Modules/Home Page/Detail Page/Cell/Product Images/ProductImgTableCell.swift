@@ -1,15 +1,15 @@
 //
-//  NewArrivalTableCell.swift
+//  ImageTableCell.swift
 //  FinalProject
 //
-//  Created by Farhan Permana on 11/04/23.
+//  Created by Farhan Permana on 02/05/23.
 //
 
 import UIKit
 
-class NewArrivalTableCell: UITableViewCell {
+class ProductImgTableCell: UITableViewCell {
     
-    static let identifier = "NewArrivalTableCell"
+    static let identifier = "ProductImgTableCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,13 +18,13 @@ class NewArrivalTableCell: UITableViewCell {
     
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UINib(nibName: "ListsCollectionCell", bundle: nil), forCellWithReuseIdentifier: ListsCollectionCell.identifier)
-        collectionView.layer.masksToBounds = true
-//        collectionView.backgroundColor = .green
-
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 1
+        layout.minimumLineSpacing = 1
+        let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
+        collectionView.register(UINib(nibName: "ProductImgCollectionCell", bundle: nil), forCellWithReuseIdentifier: ProductImgCollectionCell.identifier)
+        collectionView.layer.masksToBounds = false
+        
         return collectionView
     }()
     
@@ -46,7 +46,7 @@ class NewArrivalTableCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -56,25 +56,26 @@ class NewArrivalTableCell: UITableViewCell {
 
 }
 
-extension NewArrivalTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ProductImgTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
+    // MARK: - Collection View Cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListsCollectionCell.identifier, for: indexPath) as? ListsCollectionCell else {
-        return UICollectionViewCell()
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductImgCollectionCell.identifier, for: indexPath) as! ProductImgCollectionCell
+        cell.backgroundColor = UIColor.clear
+        cell.layer.cornerRadius = 5
+        cell.layer.masksToBounds = true
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.lightGray.cgColor
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
-    }
-    
+    // MARK: - Collection View Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // auto resizing height
-        return CGSize(width: collectionView.frame.width / 3, height: 400 )
+        let screenSize = self.bounds.width
+        return CGSize(width: screenSize, height: 300)
     }
     
     
