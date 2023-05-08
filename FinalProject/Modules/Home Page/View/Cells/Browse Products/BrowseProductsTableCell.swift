@@ -1,19 +1,21 @@
 //
-//  CarouselTableCell.swift
+//  NewArrivalTableCell.swift
 //  FinalProject
 //
-//  Created by Farhan on 10/04/23.
+//  Created by Farhan Permana on 11/04/23.
 //
 
 import UIKit
 
-class CarouselTableCell: UITableViewCell {
+class BrowseProductsTableCell: UITableViewCell {
     
-    static let identifier = "CarouselTableCell"
+    static let identifier = "BrowseProductsTableCell"
     
-    // make property of storemodel
-    var carouselDatas: StoreModel?
+    weak var delegate: PageTransitionDelegate?
     
+    var productViewModel: ProductsViewModel?
+    var browseProductsDatas: ProductsModel?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,10 +23,11 @@ class CarouselTableCell: UITableViewCell {
     
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 1
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UINib(nibName: "CarouselCollectionCell", bundle: nil), forCellWithReuseIdentifier: CarouselCollectionCell.identifier)
-        collectionView.layer.masksToBounds = false
+        collectionView.register(UINib(nibName: "ListsCollectionCell", bundle: nil), forCellWithReuseIdentifier: ListsCollectionCell.identifier)
+        collectionView.layer.masksToBounds = true
 //        collectionView.backgroundColor = .green
 
         return collectionView
@@ -43,11 +46,27 @@ class CarouselTableCell: UITableViewCell {
     func setupTable() {
         contentView.addSubview(collectionView)
         setupCollectionView()
-        collectionView.backgroundColor = UIColor.clear
+        collectionView.backgroundColor = UIColor.lightGray
         collectionView.reloadData()
         collectionView.delegate = self
         collectionView.dataSource = self
+        setupApi()
     }
+    
+    fileprivate func setupApi() {
+        self.productViewModel = ProductsViewModel(apiService: ApiService())
+        self.productViewModel?.bindProductsData = {
+            listModel in
+            if let listData = listModel {
+                self.browseProductsDatas = listData
+                print("bound products")
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -57,29 +76,36 @@ class CarouselTableCell: UITableViewCell {
 
 }
 
-extension CarouselTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension BrowseProductsTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let carousel = carouselDatas?.carousel.carousels
-        return carousel?.count ?? 0
-    
+        return browseProductsDatas?.products.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCollectionCell.identifier, for: indexPath) as? CarouselCollectionCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListsCollectionCell.identifier, for: indexPath) as? ListsCollectionCell else {
         return UICollectionViewCell()
         }
-        
-        cell.configureCarouselCell(data: carouselDatas?.carousel.carousels[indexPath.row])
         cell.setupCell()
+        cell.configure(data: browseProductsDatas?.products[indexPath.row])
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+        return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2, height: 100)
+        // auto resizing height
+        return CGSize(width: collectionView.frame.width / 2.3, height: 280 )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let product = browseProductsDatas?.products[indexPath.row]
+        
+        delegate?.moveToDetailPage(data: product)
+        
+        print(product ?? "")
     }
     
     

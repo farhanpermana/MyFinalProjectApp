@@ -8,9 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="FinalProject" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailItemController" customModule="FinalProject" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="cug-Tk-3q5" id="0Xc-zO-t3o"/>
+                <outlet property="detailTV" destination="kj4-qL-v2F" id="nL6-q3-9i2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,23 +19,20 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cug-Tk-3q5">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kj4-qL-v2F">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cug-Tk-3q5" secondAttribute="trailing" id="FeM-k3-Dn4"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cug-Tk-3q5" secondAttribute="bottom" id="Isc-XA-NFB"/>
-                <constraint firstItem="cug-Tk-3q5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Xcf-ld-y0D"/>
-                <constraint firstItem="cug-Tk-3q5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="efd-de-iMn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kj4-qL-v2F" secondAttribute="trailing" id="1d4-dg-JDb"/>
+                <constraint firstItem="kj4-qL-v2F" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="K61-8y-hL7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kj4-qL-v2F" secondAttribute="bottom" id="MWI-tn-kAG"/>
+                <constraint firstItem="kj4-qL-v2F" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="MYW-yf-dW4"/>
             </constraints>
-            <point key="canvasLocation" x="58" y="21"/>
+            <point key="canvasLocation" x="36" y="20"/>
         </view>
     </objects>
     <resources>

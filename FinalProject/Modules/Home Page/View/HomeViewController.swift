@@ -6,24 +6,23 @@
 //
 
 import UIKit
+import SkeletonView
 
 enum HomeSection: Int {
     case carousel = 0
-    case categoriesTitle = 1
-    case categories = 2
-    case saleTitle = 3
-    case sale = 4
-    case newArrivalTitle = 5
-    case newArrival = 6
-    case popularTitle = 7
-    case popular = 8
+    case categories = 1
+    case saleTitle = 2
+    case sale = 3
+    case browseAllProductsTitle = 4
+    case browseAllProducts = 5
     
 }
 
-protocol PageTransitionDelegate {
+protocol PageTransitionDelegate: AnyObject {
     func moveToMorePage(withTitle title: String)
-    func moveToDetailPage()
-    func moveToCategoryPage(data: StoreModel?)
+    func moveToDetailPage(data: Product?)
+    func moveToCategoryPage(selectedCategory: String?)
+    func moveToOrderProductPage()
 }
 
 class HomeViewController: UIViewController {
@@ -31,13 +30,15 @@ class HomeViewController: UIViewController {
     var homeViewModel: HomeViewModel?
     
     private var storeDatas: StoreModel?
-    private var productDatas: Product?
+    private var catDatas: ProductCategory?
+    private var productDatas: ProductsModel?
     
-    var delegate: PageTransitionDelegate?
+    weak var delegate: PageTransitionDelegate?
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         registerTableView()
         configureNavBar()
         setupApi()
@@ -50,9 +51,8 @@ class HomeViewController: UIViewController {
         // sale
         tableView.register(SaleCollectionTableCell.self, forCellReuseIdentifier: SaleCollectionTableCell.identifier)
         // new arrival
-        tableView.register(NewArrivalTableCell.self, forCellReuseIdentifier: NewArrivalTableCell.identifier)
+        tableView.register(BrowseProductsTableCell.self, forCellReuseIdentifier: BrowseProductsTableCell.identifier)
         tableView.register(UINib(nibName: HeaderSectionTableCell.identifier, bundle: nil), forCellReuseIdentifier: HeaderSectionTableCell.identifier)
-        tableView.register(UINib(nibName: ListsTableCell.identifier, bundle: nil), forCellReuseIdentifier: ListsTableCell.identifier)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -67,15 +67,20 @@ class HomeViewController: UIViewController {
         navigationItem.title = nil
         navigationController?.navigationBar.prefersLargeTitles = false
         
-        searchBar.placeholder = "Search"
+        searchBar.placeholder = "Search product"
+        searchBar.searchTextField.backgroundColor = UIColor.white
         
         let leftNavBarButton = UIBarButtonItem(customView: searchBar)
         self.navigationItem.leftBarButtonItem = leftNavBarButton
+        //navbar color
+        navigationController?.navigationBar.backgroundColor = UIColor(rgb: 0x9cbee6)
+        navigationController?.navigationBar.barTintColor = UIColor(rgb: 0x9cbee6)
+        navigationController?.navigationBar.tintColor = UIColor(rgb: 0x9cbee6)
         
     }
     
-    private func setupApi(apiUrl: String = "http://localhost:3003/store") {
-        self.homeViewModel = HomeViewModel(urlString: apiUrl, apiService: ApiService())
+    private func setupApi() {
+        self.homeViewModel = HomeViewModel(apiService: ApiService())
         self.homeViewModel?.bindListData = {
             listModel in
             if let listData = listModel {
@@ -88,25 +93,15 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func moveToCategoriesPage() {
-        // Handle Categories section More button action
-        let vc = MoreCategoriesController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func moveToSalePage() {
+    func moveToMoreSalePage(data: ProductsModel?) {
         // Handle Sale section More button action
         let vc = MoreSaleController()
+        vc.saleProductDatas = data
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func moveToNewArrivalPage() {
+    func moveToBrowseAllProductsPage() {
         // Handle New Arrival section More button action
-        let vc = MoreSaleController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    func moveToPopularPage() {
-        // Handle Popular section More button action
         let vc = MoreSaleController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -118,24 +113,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch section {
-        case 0:
+        case 0, 1, 2, 3, 4, 5, 6:
             return 1
-        case 1:
-            return 1
-        case 2:
-            return 1
-        case 3:
-            return 1
-        case 4:
-            return 1
-        case 5:
-            return 1
-        case 6:
-            return 1
-        case 7:
-            return 1
-        case 8:
-            return 2
             
         default:
             return 0
@@ -143,8 +122,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // different sections using switch
-        return 10
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -159,17 +137,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.setupTable()
             return cell
-        // MARK: - header sections start
-        case .categoriesTitle:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderSectionTableCell.identifier, for: indexPath) as? HeaderSectionTableCell else {
-                return UITableViewCell()
-            }
-            cell.setupCell(withSection: .categories) {
-                self.delegate?.moveToMorePage(withTitle: "Categories")
-            }
-            cell.delegate = self.delegate
-            return cell
             
+            // MARK: - header sections start
         case .saleTitle:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderSectionTableCell.identifier, for: indexPath) as? HeaderSectionTableCell else {
                 return UITableViewCell()
@@ -179,61 +148,47 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             }
             cell.delegate = self.delegate
             return cell
-        case .newArrivalTitle:
+        case .browseAllProductsTitle:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderSectionTableCell.identifier, for: indexPath) as? HeaderSectionTableCell else {
                 return UITableViewCell()
             }
-            cell.setupCell(withSection: .newArrival) {
+            cell.setupCell(withSection: .browseAllProducts) {
                 
             }
             cell.delegate = self.delegate
             return cell
-        case .popularTitle:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderSectionTableCell.identifier, for: indexPath) as? HeaderSectionTableCell else {
-                return UITableViewCell()
-            }
-            cell.setupCell(withSection: .popular) {
-                
-            }
-            cell.delegate = self.delegate
-            return cell
-        // MARK: - header sections end
+            // MARK: - header sections end
+            
         case .categories:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CatTableCell.identifier, for: indexPath) as? CatTableCell else {
                 return UITableViewCell()
             }
-            cell.setupTable()
+            
             cell.delegate = self
+            
             cell.catDatas = storeDatas
+            cell.catProduct = productDatas
+            cell.setupTable()
             return cell
             
         case .sale:
-//            guard let items = brandDatas?.products[indexPath.row],
-              guard let cell = tableView.dequeueReusableCell(withIdentifier: SaleCollectionTableCell.identifier, for: indexPath) as? SaleCollectionTableCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SaleCollectionTableCell.identifier, for: indexPath) as? SaleCollectionTableCell else { return UITableViewCell()}
             
             cell.delegate = self
-            cell.productDatas = storeDatas
+            cell.productDatas = productDatas
             cell.setupTable()
-            // if priceLabel have same value as discountprice dont show
             
-            
-
             cell.scrollDirection = .horizontal
             
             return cell
             
-        case .newArrival:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: NewArrivalTableCell.identifier, for: indexPath) as? NewArrivalTableCell else {
+        case .browseAllProducts:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: BrowseProductsTableCell.identifier, for: indexPath) as? BrowseProductsTableCell else {
                 return UITableViewCell()
             }
             cell.setupTable()
             return cell
             
-        case .popular:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ListsTableCell.identifier, for: indexPath) as? ListsTableCell else {
-                return UITableViewCell()
-            }
-            return cell
         default:
             return UITableViewCell()
         }
@@ -244,69 +199,64 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case .carousel:
             return 120
-        case .categoriesTitle:
-            // auto size
+        case .saleTitle, .browseAllProductsTitle:
             return UITableView.automaticDimension
-            
         case .categories:
             return 200
-        case .saleTitle:
-            return UITableView.automaticDimension
         case .sale:
-            return 280
-        case .newArrivalTitle:
-            return UITableView.automaticDimension
-            
-        case .newArrival:
-            return 280
-        case .popularTitle:
-            return UITableView.automaticDimension
-        case .popular:
-            return 90
+            return 290
+        case .browseAllProducts:
+            return 400
             
         default:
             return 0
         }
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if indexPath.section == 4 {
-//            self.moveToDetailPage()
-//        }
-//
-//    }
     
 }
 
 extension HomeViewController: PageTransitionDelegate {
-    func moveToCategoryPage(data: StoreModel?) {
-        let vc = CategoryController()
-        vc.storeDatas = data
-        self.navigationController?.pushViewController(vc, animated: true)
     
+    
+    func moveToOrderProductPage() {
+        
+    }
+    
+    func moveToCategoryPage(selectedCategory: String?) {
+        let vc = CategoryController()
+        guard let selectedCategory = selectedCategory else {
+            // handle case where selected category is nil
+            return
+        }
+        let filteredProducts = productDatas?.products.filter({ $0.category == selectedCategory })
+        vc.productDatas = ProductsModel(products: filteredProducts ?? [])
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
-    func moveToDetailPage() {
+    
+    func moveToDetailPage(data: Product?) {
         let vc = DetailItemController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        guard let product = data else {return}
+        vc.detailDatas = ProductsModel(products: [product])
+        navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     func moveToMorePage(withTitle title: String) {
         switch title {
-        case "Categories":
-            moveToCategoriesPage()
         case "Sale":
-            moveToSalePage()
-        case "New Arrival":
-            moveToNewArrivalPage()
-        case "Popular":
-            moveToPopularPage()
+            moveToMoreSalePage(data: productDatas)
+        case "Browse Products":
+            moveToBrowseAllProductsPage()
+            
         default:
             break
         }
-    
+        
     }
-
+    
     
     
 }

@@ -12,8 +12,9 @@ class CatTableCell: UITableViewCell {
     static let identifier = "CatTableCell"
     
     var catDatas: StoreModel?
+    var catProduct: ProductsModel?
     
-    var delegate: PageTransitionDelegate?
+    weak var delegate: PageTransitionDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -64,6 +65,7 @@ class CatTableCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isScrollEnabled = false
+//        delegate = HomeViewController() as? PageTransitionDelegate
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -80,19 +82,27 @@ extension CatTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlow
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CatCollectionCell.identifier, for: indexPath) as? CatCollectionCell else {
             return UICollectionViewCell()
         }
-        cell.configureCell(data: catDatas?.category.categories[indexPath.row])
-        
+        let category = catDatas?.category.categories[indexPath.row]
+        cell.configureCell(data: category)
+        cell.setupCell()
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return catDatas?.category.categories.count ?? 0
+        let categories = catDatas?.category.categories
+        print("cat count", categories?.count ?? 0)
+        return categories?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("category clicked")
-        delegate?.moveToCategoryPage(data: catDatas)
+//        delegate?.moveToCategoryPage()
+
+        guard let selectedCategory = catDatas?.category.categories[indexPath.row].name else {
+                return
+            }
+            delegate?.moveToCategoryPage(selectedCategory: selectedCategory)
 
     }
 }

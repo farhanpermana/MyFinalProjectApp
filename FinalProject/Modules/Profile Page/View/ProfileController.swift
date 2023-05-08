@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 enum PageSections: Int {
     case profile = 0
@@ -28,7 +29,24 @@ class ProfileController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    @objc func logoutBtnTapped(_ sender: Any) {
+     
+        do {
+            try Auth.auth().signOut()
+            print("logged out")
+        }
+        catch {
+            print("User hasn't logged out")
+        }
+        self.showSignInController()
+        removeFromParent()
 
+        
+    }
+    
+    
+    
 }
 
 extension ProfileController: UITableViewDelegate, UITableViewDataSource {
@@ -49,6 +67,8 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
         switch sections {
         case .profile:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileSectionTableCell.identifier, for: indexPath) as? ProfileSectionTableCell else { return UITableViewCell() }
+            cell.logoutBtn.addTarget(self, action: #selector(logoutBtnTapped(_:)), for: .touchUpInside)
+            cell.setupCell()
             return cell
         case .menus:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableCell.identifier, for: indexPath) as? MenuTableCell else { return UITableViewCell() }
@@ -64,14 +84,23 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
         let section = PageSections(rawValue: indexPath.section)
         switch section {
         case .profile:
-            return 150
+            return 100
         case .menus:
             // auto size
-            return 50
+            return UITableView.automaticDimension
         default:
             return 0
         }
         
         
     }
+}
+
+extension UIViewController {
+    func showHomeController() {
+        let vc = HomeViewController()
+
+        self.navigationController?.pushViewController(vc, animated: true)
+        removeFromParent()
+        }
 }

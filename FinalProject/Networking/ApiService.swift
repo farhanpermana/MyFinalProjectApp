@@ -8,18 +8,15 @@
 import Foundation
 
 protocol ApiServiceProtocol {
-    func get(url: URL)
-    func callAPI<T:Codable>(model:T.Type, completion: @escaping (Result<T,Error>) -> Void)
+
+    func callAPI<T:Codable>(url urlString: String, model:T.Type, completion: @escaping (Result<T,Error>) -> Void)
 }
 
 class ApiService: ApiServiceProtocol {
-    private var url = URL(string: "")
-    func get(url: URL) {
-        self.url = url
-    }
+
     
-    func callAPI<T>(model: T.Type, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable, T : Encodable {
-        guard let url = self.url else {return}
+    func callAPI<T>(url urlString: String, model: T.Type, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable, T : Encodable {
+        guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 completion(.failure(error))

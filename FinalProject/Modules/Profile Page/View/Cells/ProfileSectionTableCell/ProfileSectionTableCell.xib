@@ -17,29 +17,39 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vogue" translatesAutoresizingMaskIntoConstraints="NO" id="sl9-ac-EGG">
-                        <rect key="frame" x="12" y="12" width="80" height="80"/>
+                        <rect key="frame" x="16" y="12" width="80" height="80"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="80" id="0We-5w-1bd"/>
                             <constraint firstAttribute="width" constant="80" id="lst-th-UDL"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLY-5Y-3Hu">
-                        <rect key="frame" x="100" y="16" width="42" height="21"/>
+                        <rect key="frame" x="104" y="16" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zu8-9d-IhI">
-                        <rect key="frame" x="100" y="42" width="42" height="21"/>
+                        <rect key="frame" x="104" y="42" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnL-Uu-oEA">
+                        <rect key="frame" x="250" y="30" width="54" height="35"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right" catalog="system"/>
+                        <connections>
+                            <action selector="logoutBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l3q-t3-Wft"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Zu8-9d-IhI" firstAttribute="leading" secondItem="sl9-ac-EGG" secondAttribute="trailing" constant="8" id="8eU-CD-d03"/>
                     <constraint firstItem="Zu8-9d-IhI" firstAttribute="top" secondItem="VLY-5Y-3Hu" secondAttribute="bottom" constant="5" id="AfE-uM-H7l"/>
-                    <constraint firstItem="sl9-ac-EGG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="uk5-sR-hHA"/>
+                    <constraint firstAttribute="trailing" secondItem="PnL-Uu-oEA" secondAttribute="trailing" constant="16" id="Mpq-Ub-TqO"/>
+                    <constraint firstItem="PnL-Uu-oEA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="NCh-t6-9ej"/>
+                    <constraint firstItem="sl9-ac-EGG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="uk5-sR-hHA"/>
                     <constraint firstItem="VLY-5Y-3Hu" firstAttribute="leading" secondItem="sl9-ac-EGG" secondAttribute="trailing" constant="8" id="v0f-Nf-YHx"/>
                     <constraint firstItem="sl9-ac-EGG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="vtb-nu-kp2"/>
                     <constraint firstItem="VLY-5Y-3Hu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="wzT-Q5-Ef4"/>
@@ -47,7 +57,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bgView" destination="H2p-sc-9uM" id="pkQ-b8-51W"/>
                 <outlet property="emailLbl" destination="Zu8-9d-IhI" id="MrY-8d-ZVX"/>
+                <outlet property="logoutBtn" destination="PnL-Uu-oEA" id="BWr-si-c4O"/>
                 <outlet property="nameLbl" destination="VLY-5Y-3Hu" id="6bj-DL-6uO"/>
                 <outlet property="profileImg" destination="sl9-ac-EGG" id="VhT-Sb-Keb"/>
             </connections>
@@ -55,6 +67,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="109"/>
         <image name="vogue" width="640" height="801"/>
     </resources>
 </document>

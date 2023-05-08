@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="253" id="KGk-i7-Jjw" customClass="DescTableCell" customModule="FinalProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="253"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="253"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nama Produk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxV-ge-HrL">
+                        <rect key="frame" x="8" y="48.333333333333336" width="103" height="20.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desc produk Desc produk Desc produk " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTf-Hm-wBs">
+                        <rect key="frame" x="8" y="105" width="304" height="20.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekN-8k-tm3">
+                        <rect key="frame" x="8" y="20" width="38.333333333333336" height="20.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="dtf-bi-k64">
+                        <rect key="frame" x="8" y="76.666666666666671" width="132.33333333333334" height="20.333333333333329"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="apparel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="une-4w-19G">
+                                <rect key="frame" x="0.0" y="0.0" width="57" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="men" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="18E-sb-9o0">
+                                <rect key="frame" x="99" y="0.0" width="33.333333333333343" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like" translatesAutoresizingMaskIntoConstraints="NO" id="xMw-AY-Cfa">
+                        <rect key="frame" x="292" y="20" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="3pd-04-sYg"/>
+                            <constraint firstAttribute="width" constant="20" id="r71-E6-fdu"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dtf-bi-k64" firstAttribute="top" secondItem="KxV-ge-HrL" secondAttribute="bottom" constant="8" id="0u9-IT-Q6k"/>
+                    <constraint firstItem="KxV-ge-HrL" firstAttribute="top" secondItem="ekN-8k-tm3" secondAttribute="bottom" constant="8" id="8ss-ph-TZF"/>
+                    <constraint firstAttribute="trailing" secondItem="xMw-AY-Cfa" secondAttribute="trailing" constant="8" id="90q-2y-gG6"/>
+                    <constraint firstItem="rTf-Hm-wBs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="9zd-UJ-7is"/>
+                    <constraint firstItem="KxV-ge-HrL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="RFB-TX-ST2"/>
+                    <constraint firstItem="ekN-8k-tm3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="SON-uC-oDM"/>
+                    <constraint firstItem="rTf-Hm-wBs" firstAttribute="top" secondItem="dtf-bi-k64" secondAttribute="bottom" constant="8" id="X2z-cE-96W"/>
+                    <constraint firstAttribute="trailing" secondItem="rTf-Hm-wBs" secondAttribute="trailing" constant="8" id="byc-Id-5EY"/>
+                    <constraint firstItem="dtf-bi-k64" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="gSb-g4-fYV"/>
+                    <constraint firstItem="ekN-8k-tm3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="okV-Re-E2C"/>
+                    <constraint firstItem="xMw-AY-Cfa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="ott-Vj-wVx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="categoryLabel" destination="une-4w-19G" id="yoX-Fj-GH7"/>
+                <outlet property="priceLabel" destination="ekN-8k-tm3" id="V87-iD-4hO"/>
+                <outlet property="productDescLabel" destination="rTf-Hm-wBs" id="L2a-29-5Ec"/>
+                <outlet property="productNameLabel" destination="KxV-ge-HrL" id="weR-UF-99s"/>
+                <outlet property="typeLabel" destination="18E-sb-9o0" id="dfs-w4-Kwy"/>
+            </connections>
+            <point key="canvasLocation" x="36.641221374045799" y="93.309859154929583"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Like" width="24" height="22"/>
+    </resources>
+</document>

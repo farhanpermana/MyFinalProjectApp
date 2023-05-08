@@ -28,9 +28,9 @@ class CarouselCollectionCell: UICollectionViewCell {
         
     }
     
-    func configureCarouselCell(data: Carousel?) {
+    func configureCarouselCell(data: CarouselElement?) {
 //        imgView.image = UIImage(named: data?.carousels[0].banner ?? "banner")
-        imgView.sd_setImage(with: URL(string: data?.carousels[0].banner ?? "banner"), placeholderImage: UIImage(named: "banner"))
+        imgView.sd_setImage(with: URL(string: data?.banner ?? "banner"), placeholderImage: UIImage(named: "banner"))
     
     
     }

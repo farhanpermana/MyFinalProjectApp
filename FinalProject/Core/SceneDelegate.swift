@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -13,12 +14,39 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let home = TabBar()
-        self.window?.rootViewController = home
-        window?.makeKeyAndVisible()
-        window?.windowScene = windowScene
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//                window = UIWindow(frame: UIScreen.main.bounds)
+//                let home = TabBar()
+//                self.window?.rootViewController = home
+//                window?.makeKeyAndVisible()
+//                window?.windowScene = windowScene
+        
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        let viewController: UIViewController
+//
+//        if let currUser = Auth.auth().currentUser {window = UIWindow(frame: UIScreen.main.bounds)
+//            print(currUser)
+//            viewController = TabBar()
+//        } else {
+//            viewController = UINavigationController(rootViewController: LoginController())
+//        }
+//        window = UIWindow(windowScene: windowScene)
+//        window?.rootViewController = viewController
+//        window?.makeKeyAndVisible()
+            
+            guard let windowScene = (scene as? UIWindowScene) else { return }
+            window = UIWindow(windowScene: windowScene)
+            let viewController: UIViewController
+            
+            if let currUser = Auth.auth().currentUser {
+                print(currUser)
+                viewController = TabBar()
+            } else {
+                viewController = UINavigationController(rootViewController: SignInController())
+            }
+            window?.rootViewController = viewController
+            window?.makeKeyAndVisible()
+            
         
     }
 
@@ -27,6 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+        
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {

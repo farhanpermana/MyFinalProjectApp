@@ -8,7 +8,6 @@
 import Foundation
 
 protocol ApiServiceStoreProtocol {
-    var urlString: String? { get set }
     var bindListData: ((StoreModel?) -> ())? {get set}
     func fetchItem()
 }
@@ -16,20 +15,16 @@ protocol ApiServiceStoreProtocol {
 class HomeViewModel: ApiServiceStoreProtocol {
     
     private var apiService: ApiService?
-    var data: StoreModel?
-    var urlString: String?
+    private var urlString = "http://localhost:3003/store"
+    
     var bindListData: ((StoreModel?) -> Void)?
-    init(urlString: String?, apiService: ApiService?){
-        self.urlString = urlString
+    init(apiService: ApiService?){
         self.apiService = apiService
-        if let url = URL(string: urlString ?? "") {
-            self.apiService?.get(url: url)
-        }
         fetchItem()
     }
     
     func fetchItem() {
-        self.apiService?.callAPI(model: StoreModel?.self, completion: { response in
+        self.apiService?.callAPI(url: urlString, model: StoreModel?.self, completion: { response in
             switch response {
             case .success(let success):
                 self.bindListData?(success)
@@ -40,8 +35,4 @@ class HomeViewModel: ApiServiceStoreProtocol {
             }
         })
     }
-    
-//    func numberOfRowsInSection() -> Int {
-//
-//    }
 }

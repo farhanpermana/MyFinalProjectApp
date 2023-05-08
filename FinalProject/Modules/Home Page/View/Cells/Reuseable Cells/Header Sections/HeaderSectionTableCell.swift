@@ -11,16 +11,16 @@ import UIKit
 
 enum SectionType: Int {
     case categories = 0
-    case newArrival = 1
-    case sale = 2
-    case popular = 3
+    case sale = 1
+    case browseAllProducts = 2
+//    case popular = 3
 }
 
 class HeaderSectionTableCell: UITableViewCell {
     
     static let identifier = "HeaderSectionTableCell"
     
-    var delegate: PageTransitionDelegate?
+    weak var delegate: PageTransitionDelegate?
     var moreBtnFunction: (() -> Void)? // store the closure
 
     
@@ -40,8 +40,8 @@ class HeaderSectionTableCell: UITableViewCell {
         moreBtn.setTitle("More", for: .normal)
     }
     
-    func newArrivalSection() {
-        titleLabel.text = "New Arrival"
+    func browseAllProductsSection() {
+        titleLabel.text = "Browse Products"
         moreBtn.setTitle("More", for: .normal)
     }
     
@@ -60,12 +60,12 @@ class HeaderSectionTableCell: UITableViewCell {
         switch section {
         case .categories:
             categoriesSection()
-        case .newArrival:
-            newArrivalSection()
+        case .browseAllProducts:
+            browseAllProductsSection()
         case .sale:
             saleSection()
-        case .popular:
-            popularSection()
+//        case .popular:
+//            popularSection()
         }
         self.moreBtnFunction = moreBtnFunction
     }

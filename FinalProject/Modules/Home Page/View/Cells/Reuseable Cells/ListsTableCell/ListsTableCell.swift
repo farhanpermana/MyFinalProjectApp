@@ -6,12 +6,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ListsTableCell: UITableViewCell {
     
     static let identifier = "ListsTableCell"
-
-    @IBOutlet weak var numberLabel: UILabel!
     
     @IBOutlet weak var imgLabel: UIImageView!
     
@@ -32,11 +31,13 @@ class ListsTableCell: UITableViewCell {
     func setupCell() {
         
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func configureSaleProducts(data: Product?) {
+        imgLabel.sd_setImage(with: URL(string: data?.thumbnail ?? ""), completed: nil)
+        productTitle.text = data?.title
+        productType.text = data?.type
+        category.text = data?.category
+        price.text = "Rp. \(data?.price ?? 0)"
     }
     
 }

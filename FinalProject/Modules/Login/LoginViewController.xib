@@ -8,8 +8,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="FinalProject" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginController" customModule="FinalProject" customModuleProvider="target">
             <connections>
+                <outlet property="emailTextField" destination="7t6-qr-JuQ" id="Ysn-SH-Q9p"/>
+                <outlet property="forgotPasswordBtn" destination="Ab5-Tw-keE" id="Usg-ve-Avk"/>
+                <outlet property="loginButton" destination="Ffh-Mz-fyw" id="VkL-tm-9JH"/>
+                <outlet property="passwordTextField" destination="nG1-VT-dHR" id="9hS-e8-ewQ"/>
+                <outlet property="signUpButton" destination="ceg-OK-e8n" id="Vmt-Co-Cm4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,13 +30,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWW-5l-hm8">
-                    <rect key="frame" x="16" y="293" width="382" height="29"/>
+                    <rect key="frame" x="16" y="167" width="382" height="29"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7t6-qr-JuQ">
-                    <rect key="frame" x="16" y="392" width="382" height="50"/>
+                    <rect key="frame" x="16" y="266" width="382" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="cg8-CI-QXN"/>
                     </constraints>
@@ -39,7 +44,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nG1-VT-dHR">
-                    <rect key="frame" x="16" y="472" width="382" height="50"/>
+                    <rect key="frame" x="16" y="346" width="382" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="OY3-oc-yeX"/>
                     </constraints>
@@ -47,20 +52,23 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ffh-Mz-fyw">
-                    <rect key="frame" x="16" y="604.5" width="382" height="50"/>
+                    <rect key="frame" x="16" y="478.5" width="382" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="CeQ-5w-pdR"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                    <connections>
+                        <action selector="loginBtnTapped:" destination="-1" eventType="touchUpInside" id="BZm-9I-YgD"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ab5-Tw-keE">
-                    <rect key="frame" x="217" y="546" width="181" height="34.5"/>
+                    <rect key="frame" x="217" y="420" width="181" height="34.5"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Forgot password?" titleAlignment="center"/>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="QS4-eO-K8F">
-                    <rect key="frame" x="66" y="704.5" width="282" height="34.5"/>
+                    <rect key="frame" x="66" y="578.5" width="282" height="34.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONJ-13-yrf">
                             <rect key="frame" x="0.0" y="0.0" width="179" height="34.5"/>
@@ -72,6 +80,9 @@
                             <rect key="frame" x="180" y="0.0" width="102" height="34.5"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Sign up"/>
+                            <connections>
+                                <action selector="signUpBtnTapped:" destination="-1" eventType="touchUpInside" id="Ywq-Vn-osi"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>
@@ -83,7 +94,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7t6-qr-JuQ" secondAttribute="trailing" constant="16" id="3fI-RO-qd3"/>
                 <constraint firstItem="bWW-5l-hm8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="43W-1q-xdH"/>
                 <constraint firstItem="Ab5-Tw-keE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="217" id="45a-nD-iGz"/>
-                <constraint firstItem="bWW-5l-hm8" firstAttribute="top" secondItem="gMI-ZV-vte" secondAttribute="bottom" constant="176" id="8hR-V2-7LL"/>
+                <constraint firstItem="bWW-5l-hm8" firstAttribute="top" secondItem="gMI-ZV-vte" secondAttribute="bottom" constant="50" id="8hR-V2-7LL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gMI-ZV-vte" secondAttribute="trailing" constant="8" id="99o-sa-2JX"/>
                 <constraint firstItem="QS4-eO-K8F" firstAttribute="top" secondItem="Ffh-Mz-fyw" secondAttribute="bottom" constant="50" id="9t8-qr-bkZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="QS4-eO-K8F" secondAttribute="trailing" constant="66" id="B7F-Qi-L0d"/>

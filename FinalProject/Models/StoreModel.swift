@@ -10,8 +10,8 @@ import Foundation
 struct StoreModel: Codable {
     let title: String
     let carousel: Carousel
-    let category: WelcomeCategory
-    let product: Product
+    let category: ProductCategory
+    
 }
 
 // MARK: - WelcomeCarousel
@@ -37,7 +37,7 @@ struct CarouselElement: Codable {
 }
 
 // MARK: - WelcomeCategory
-struct WelcomeCategory: Codable {
+struct ProductCategory: Codable {
     let categoryID: Int
     let categories: [CategoryElement]
 
@@ -57,33 +57,4 @@ struct CategoryElement: Codable {
         case catID = "catId"
         case name, icon
     }
-}
-
-// MARK: - WelcomeProduct
-struct Product: Codable {
-    let products: [ProductElement]
-}
-
-// MARK: - ProductElement
-struct ProductElement: Codable {
-    let id: Int
-    let title: String
-    let price, discountPrice: Double
-    let description: String
-    let type: TypeEnum
-    let category: String
-    let image1, image2, image3: String
-    let rating: Rating
-}
-
-// MARK: - Rating
-struct Rating: Codable {
-    let rate: Double
-    let count: Int
-}
-
-enum TypeEnum: String, Codable {
-    case men = "men"
-    case unisex = "unisex"
-    case women = "women"
 }

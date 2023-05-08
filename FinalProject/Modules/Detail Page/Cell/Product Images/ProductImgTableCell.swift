@@ -1,19 +1,19 @@
 //
-//  CarouselTableCell.swift
+//  ImageTableCell.swift
 //  FinalProject
 //
-//  Created by Farhan on 10/04/23.
+//  Created by Farhan Permana on 02/05/23.
 //
 
 import UIKit
 
-class CarouselTableCell: UITableViewCell {
+class ProductImgTableCell: UITableViewCell {
     
-    static let identifier = "CarouselTableCell"
+    static let identifier = "ProductImgTableCell"
     
-    // make property of storemodel
-    var carouselDatas: StoreModel?
-    
+    var productDetailImgDatas: ProductsModel?
+    var productDetailImgDatasArray: Product?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,11 +22,12 @@ class CarouselTableCell: UITableViewCell {
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UINib(nibName: "CarouselCollectionCell", bundle: nil), forCellWithReuseIdentifier: CarouselCollectionCell.identifier)
+        layout.minimumInteritemSpacing = 1
+        layout.minimumLineSpacing = 1
+        let collectionView = UICollectionView(frame: .zero,collectionViewLayout: layout)
+        collectionView.register(UINib(nibName: "ProductDetailImgCollectionCell", bundle: nil), forCellWithReuseIdentifier: ProductDetailImgCollectionCell.identifier)
         collectionView.layer.masksToBounds = false
-//        collectionView.backgroundColor = .green
-
+        
         return collectionView
     }()
     
@@ -48,6 +49,7 @@ class CarouselTableCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -57,29 +59,27 @@ class CarouselTableCell: UITableViewCell {
 
 }
 
-extension CarouselTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ProductImgTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let carousel = carouselDatas?.carousel.carousels
-        return carousel?.count ?? 0
-    
+        let count = productDetailImgDatas?.products[section].images.count ?? 0
+        
+        print("detail img", count)
+        return count
     }
     
+    // MARK: - Collection View Cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CarouselCollectionCell.identifier, for: indexPath) as? CarouselCollectionCell else {
-        return UICollectionViewCell()
-        }
-        
-        cell.configureCarouselCell(data: carouselDatas?.carousel.carousels[indexPath.row])
-        cell.setupCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductDetailImgCollectionCell.identifier, for: indexPath) as? ProductDetailImgCollectionCell else { return UICollectionViewCell() }
+        cell.setupProductDetailImgCollectionCell()
+
+        cell.productDetailImg.sd_setImage(with: URL(string: productDetailImgDatas?.products.first?.images[indexPath.row] ?? ""), completed: nil)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
-    }
-    
+    // MARK: - Collection View Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2, height: 100)
+        let screenSize = self.bounds.width
+        return CGSize(width: screenSize, height: 300)
     }
     
     

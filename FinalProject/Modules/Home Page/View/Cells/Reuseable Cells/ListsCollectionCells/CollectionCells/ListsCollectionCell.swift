@@ -20,6 +20,7 @@ class ListsCollectionCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var bgView: UIView!
     
     
     override func awakeFromNib() {
@@ -27,25 +28,31 @@ class ListsCollectionCell: UICollectionViewCell {
         
     }
     func setupCell() {
+        // bgview
+        bgView.layer.cornerRadius = 10
+        bgView.layer.masksToBounds = true
+        
+        // beforeprice strikethrough
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: beforePrice.text!)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
+        beforePrice.attributedText = attributeString
         // afterprice red
         afterPrice.textColor = UIColor.red
         // title
         titleLabel.textColor = UIColor.black
+        // description
+        descLabel.textColor = UIColor.black
+        
+        
     }
     
-    func configure(data: ProductElement?) {
-        productImg.sd_setImage(with: URL(string: data?.image1 ?? ""), completed: nil)
+    func configure(data: Product?) {
+        productImg.sd_setImage(with: URL(string: data?.thumbnail ?? ""), completed: nil)
         
         titleLabel.text = data?.title
-        beforePrice.text = "\(data?.price ?? 0)"
-        afterPrice.text = "\(data?.discountPrice ?? 0)"
+        beforePrice.text = "Rp. \(data?.price ?? 0)"
+        afterPrice.text = "Rp. \(data?.discountPrice ?? 0)"
         descLabel.text = data?.description
-
-
-//        beforePrice.text = "\(data?.products[0].price ?? 0)"
-//        afterPrice.text = "\(data?.products[0].discountPrice ?? 0)"
-//        descLabel.text = data?.products[0].description
-
 
     }
 
