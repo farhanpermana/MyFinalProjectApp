@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryController" customModule="FinalProject" customModuleProvider="target">
             <connections>
+                <outlet property="categoryTitle" destination="zL5-a8-FjK" id="TW4-Hs-lH1"/>
                 <outlet property="tableView" destination="Azg-3o-FRJ" id="WNa-vL-hJV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,19 +21,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Azg-3o-FRJ">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <rect key="frame" x="0.0" y="112" width="393" height="706"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zL5-a8-FjK">
+                    <rect key="frame" x="16" y="75" width="96" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="Azg-3o-FRJ" firstAttribute="top" secondItem="zL5-a8-FjK" secondAttribute="bottom" constant="8" id="2NT-rY-kmn"/>
                 <constraint firstItem="Azg-3o-FRJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8fQ-SQ-WJf"/>
+                <constraint firstItem="zL5-a8-FjK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="I9W-TF-641"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Azg-3o-FRJ" secondAttribute="bottom" id="YrL-lk-jUd"/>
-                <constraint firstItem="Azg-3o-FRJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="iDg-Tq-Yi6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Azg-3o-FRJ" secondAttribute="trailing" id="isx-HG-IwP"/>
+                <constraint firstItem="zL5-a8-FjK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="keS-8i-z40"/>
             </constraints>
-            <point key="canvasLocation" x="36" y="20"/>
+            <point key="canvasLocation" x="35.877862595419849" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>

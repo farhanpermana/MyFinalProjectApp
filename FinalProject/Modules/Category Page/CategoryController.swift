@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import SkeletonView
 
 class CategoryController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var categoryTitle: UILabel!
     
     var selectedCategory: String?
     
@@ -22,13 +23,14 @@ class CategoryController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTable()
-        
+        categoryTitle.text = selectedCategory?.capitalized ?? ""
     }
     func registerTable() {
         tableView.register(UINib(nibName: ListsTableCell.identifier, bundle: nil), forCellReuseIdentifier: ListsTableCell.identifier)
         
         tableView.delegate = self
         tableView.dataSource = self
+        
         setupApi()
     }
     
@@ -46,8 +48,6 @@ class CategoryController: UIViewController {
         }
     }
     
-    
-    
 }
 
 extension CategoryController: UITableViewDelegate, UITableViewDataSource {
@@ -64,9 +64,7 @@ extension CategoryController: UITableViewDelegate, UITableViewDataSource {
         guard let product = productDatas?.products[indexPath.section],
               let cell = tableView.dequeueReusableCell(withIdentifier: ListsTableCell.identifier, for: indexPath) as? ListsTableCell else { return UITableViewCell() }
         
-        
         cell.configureSaleProducts(data: product)
-        
         
         return cell
         

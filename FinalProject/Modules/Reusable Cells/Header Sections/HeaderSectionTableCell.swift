@@ -7,13 +7,9 @@
 
 import UIKit
 
-
-
 enum SectionType: Int {
-    case categories = 0
-    case sale = 1
-    case browseAllProducts = 2
-//    case popular = 3
+    case sale = 0
+    case browseAllProducts = 1
 }
 
 class HeaderSectionTableCell: UITableViewCell {
@@ -33,48 +29,36 @@ class HeaderSectionTableCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-
-    
-    func categoriesSection() {
-        titleLabel.text = "Categories"
-        moreBtn.setTitle("More", for: .normal)
-    }
     
     func browseAllProductsSection() {
         titleLabel.text = "Browse Products"
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         moreBtn.setTitle("More", for: .normal)
+        moreBtn.tintColor = UIColor(rgb: 0x75001d)
     }
     
     func saleSection() {
         titleLabel.text = "Sale"
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         moreBtn.setTitle("More", for: .normal)
-    }
-    
-    func popularSection() {
-        titleLabel.text = "Popular"
-        moreBtn.setTitle("More", for: .normal)
+        moreBtn.tintColor = UIColor(rgb: 0x75001d)
     }
     
     func setupCell(withSection section: SectionType, moreBtnFunction: @escaping () -> Void) {
         
         switch section {
-        case .categories:
-            categoriesSection()
         case .browseAllProducts:
             browseAllProductsSection()
         case .sale:
             saleSection()
-//        case .popular:
-//            popularSection()
+            self.moreBtnFunction = moreBtnFunction
         }
-        self.moreBtnFunction = moreBtnFunction
     }
     
     // ibaction
     @IBAction func moreBtnTapped(_ sender: Any) {
-//        self.delegate?.moveToMorePage(withTitle: titleLabel.text ?? "")
         self.moreBtnFunction?()
-        print("clicked")
+        print("moreBtnTapped clicked")
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import SDWebImage
 import SkeletonView
+import Kingfisher
 
 class ListsTableCell: UITableViewCell {
     
@@ -32,18 +32,21 @@ class ListsTableCell: UITableViewCell {
     }
     
     func setupCell() {
+        // bold
+        productTitle.font = productTitle.font.withSize(12)
         
     }
     
     func configureSaleProducts(data: Product?) {
-        bgView.showSkeleton()
-//        imgLabel.sd_setImage(with: URL(string: data?.thumbnail ?? ""), completed: nil)
-        imgLabel.imageFromURL(urlString: data?.thumbnail ?? "", size: CGSize(width: 50, height: 50) )
+//        bgView.showSkeleton()
+//        imgLabel.imageFromURL(urlString: data?.thumbnail ?? "", size: CGSize(width: 50, height: 60) )
+//        imgLabel.sd_setImage(with: URL(string: data?.thumbnail ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
+        imgLabel.kf.setImage(with: URL(string: data?.thumbnail ?? ""))
         productTitle.text = data?.title
         productType.text = data?.type
         category.text = data?.category
-        price.text = "$\(data?.price ?? 0)"
-            bgView.hideSkeleton()
+        price.text = "$\(data?.discountPrice ?? 0)"
+//        bgView.hideSkeleton()
     }
     
 }

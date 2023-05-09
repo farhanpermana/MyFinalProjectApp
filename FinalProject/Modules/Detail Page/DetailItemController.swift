@@ -9,13 +9,12 @@ import UIKit
 enum DetailSections: Int {
     case image = 0
     case description = 1
-    case order = 2
 }
 
 class DetailItemController: UIViewController {
     
     static let identifier = "DetailItemController"
-
+    
     @IBOutlet weak var detailTV: UITableView!
     
     
@@ -37,9 +36,12 @@ class DetailItemController: UIViewController {
         
         detailTV.delegate = self
         detailTV.dataSource = self
+        
+        detailTV.allowsSelection = false
+    
     }
     
-
+    
 }
 
 extension DetailItemController: UITableViewDelegate, UITableViewDataSource {
@@ -50,7 +52,7 @@ extension DetailItemController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductImgTableCell.identifier, for: indexPath) as? ProductImgTableCell else { return UITableViewCell() }
             
             cell.productDetailImgDatas = detailDatas
-
+            
             
             cell.setupTable()
             return cell
@@ -73,18 +75,16 @@ extension DetailItemController: UITableViewDelegate, UITableViewDataSource {
         return 3
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            
-            let section = DetailSections(rawValue: indexPath.section)
-            switch section {
-            case .image:
-                return 300
-            case .description:
-                return 400
-            case .order:
-                return 300
-            default:
-                return 0
-            }
+        
+        let section = DetailSections(rawValue: indexPath.section)
+        switch section {
+        case .image:
+            return 300
+        case .description:
+            return 300
+        default:
+            return 0
+        }
         
     }
     

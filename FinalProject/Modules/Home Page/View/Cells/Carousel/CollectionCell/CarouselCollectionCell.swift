@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 class CarouselCollectionCell: UICollectionViewCell {
     
@@ -27,9 +27,7 @@ class CarouselCollectionCell: UICollectionViewCell {
     }
     
     func configureCarouselCell(data: CarouselElement?) {
-        imgView.imageFromURL(urlString: data?.banner ?? "", size: CGSize(width: 100, height: 50))
+        imgView.kf.setImage(with: URL(string: data?.banner ?? ""))
+    
     }
-    
-    
-
 }

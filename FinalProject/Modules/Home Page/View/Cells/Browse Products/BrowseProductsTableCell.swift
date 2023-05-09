@@ -15,7 +15,7 @@ class BrowseProductsTableCell: UITableViewCell {
     
     var productViewModel: ProductsViewModel?
     var browseProductsDatas: ProductsModel?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,12 +24,11 @@ class BrowseProductsTableCell: UITableViewCell {
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 1
+        layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(UINib(nibName: "ListsCollectionCell", bundle: nil), forCellWithReuseIdentifier: ListsCollectionCell.identifier)
         collectionView.layer.masksToBounds = true
-//        collectionView.backgroundColor = .green
-
+        
         return collectionView
     }()
     
@@ -47,7 +46,7 @@ class BrowseProductsTableCell: UITableViewCell {
         contentView.addSubview(collectionView)
         setupCollectionView()
         collectionView.backgroundColor = UIColor.lightGray
-        collectionView.reloadData()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         setupApi()
@@ -66,14 +65,14 @@ class BrowseProductsTableCell: UITableViewCell {
             }
         }
     }
-
-
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
 
 extension BrowseProductsTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -85,22 +84,24 @@ extension BrowseProductsTableCell: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let browse = browseProductsDatas?.products[indexPath.row],
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListsCollectionCell.identifier, for: indexPath) as? ListsCollectionCell else {
-        return UICollectionViewCell()
+              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListsCollectionCell.identifier, for: indexPath) as? ListsCollectionCell else {
+            return UICollectionViewCell()
         }
+        
+        cell.configureBrowse(data: browse)
         cell.setupCell()
-        cell.configure(data: browse)
+        
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        return UIEdgeInsets(top: 6, left: 16, bottom: 0, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // auto resizing height
-        return CGSize(width: collectionView.frame.width / 2.3, height: 280 )
+        return CGSize(width: collectionView.frame.width / 2.3, height: 330 )
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -108,7 +109,7 @@ extension BrowseProductsTableCell: UICollectionViewDataSource, UICollectionViewD
         
         delegate?.moveToDetailPage(data: product)
         
-        print(product ?? "")
+        print(product ?? "no browse")
     }
     
     

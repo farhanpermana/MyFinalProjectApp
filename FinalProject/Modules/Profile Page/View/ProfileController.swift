@@ -17,6 +17,8 @@ class ProfileController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let menus = ["My Orders", "My Address", "My Wishlist", "My Reviews"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTable()
@@ -34,7 +36,11 @@ class ProfileController: UIViewController {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
+            // disable tabbar
+            self.tabBarController?.tabBar.isHidden = true
+            // move to sign in
             showSignInController()
+            
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
@@ -48,7 +54,7 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             return 1 // profile section
         case 1:
-            return 4 // menus section
+            return menus.count // menus section
         default:
             return 0
             
@@ -65,6 +71,7 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case .menus:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableCell.identifier, for: indexPath) as? MenuTableCell else { return UITableViewCell() }
+            cell.titleLabel.text = menus[indexPath.row]
             cell.setupCell()
             return cell
         default:
@@ -93,9 +100,13 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
 extension UIViewController {
     func showHomeController() {
         let vc = HomeViewController()
+        
+        // set tabbar as root view controller
         let tabbar = TabBar()
-        tabbar.viewControllers = [vc]
+        self.view.window?.rootViewController = tabbar
+        
         self.navigationController?.pushViewController(vc, animated: true)
+        // Remove the current view controller from its parent view controller
         removeFromParent()
     }
 }

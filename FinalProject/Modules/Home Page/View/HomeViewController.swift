@@ -8,6 +8,7 @@
 import UIKit
 import SkeletonView
 
+// MARK: - home sections
 enum HomeSection: Int {
     case carousel = 0
     case categories = 1
@@ -17,16 +18,16 @@ enum HomeSection: Int {
     case browseAllProducts = 5
 }
 
+// MARK: - pagetransition protocol
 protocol PageTransitionDelegate: AnyObject {
-    func moveToMorePage(withTitle title: String)
+    func moveToMorePage(withTitle title: String?)
     func moveToDetailPage(data: Product?)
     func moveToCategoryPage(selectedCategory: String?)
-    func moveToOrderProductPage()
 }
 
 class HomeViewController: UIViewController {
     
-    var homeViewModel: HomeViewModel?
+    var storeViewModel: StoreViewModel?
     
     private var storeDatas: StoreModel?
     private var catDatas: ProductCategory?
@@ -67,20 +68,22 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         
         searchBar.placeholder = "Search product"
-        searchBar.searchTextField.backgroundColor = UIColor.white
+        searchBar.searchTextField.backgroundColor = UIColor(rgb: 0x75001d)
+        searchBar.searchTextField.textColor = .white
+        searchBar.searchTextField.leftView?.tintColor = .white
+        searchBar.searchTextField.tintColor = .white
+        // placeholder color
+        let placeholderAppearance = UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self])
+        placeholderAppearance.textColor = .white
         
         let leftNavBarButton = UIBarButtonItem(customView: searchBar)
         self.navigationItem.leftBarButtonItem = leftNavBarButton
-        //navbar color
-        navigationController?.navigationBar.backgroundColor = UIColor(rgb: 0x9cbee6)
-        navigationController?.navigationBar.barTintColor = UIColor(rgb: 0x9cbee6)
-//        navigationController?.navigationBar.tintColor = UIColor(rgb: 0x9cbee6)
         
     }
     
     private func setupApi() {
-        self.homeViewModel = HomeViewModel(apiService: ApiService())
-        self.homeViewModel?.bindListData = {
+        self.storeViewModel = StoreViewModel(apiService: ApiService())
+        self.storeViewModel?.bindListData = {
             listModel in
             if let listData = listModel {
                 self.storeDatas = listData
@@ -96,15 +99,17 @@ class HomeViewController: UIViewController {
         // Handle Sale section More button action
         let vc = MoreSaleController()
         vc.saleProductDatas = data
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func moveToBrowseAllProductsPage() {
+    func moveToBrowseAllProductsPage(data: ProductsModel?) {
         // Handle New Arrival section More button action
-        let vc = MoreSaleController()
+        let vc = BrowseAllController()
+        vc.browseProductDatas = data
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
     
 }
 
@@ -128,14 +133,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         let section = HomeSection(rawValue: indexPath.section)
         switch section {
-        case .carousel:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CarouselTableCell.identifier, for: indexPath) as? CarouselTableCell else {
-                return UITableViewCell()
-            }
-            cell.carouselDatas = storeDatas
-            
-            cell.setupTable()
-            return cell
             
             // MARK: - header sections start
         case .saleTitle:
@@ -152,11 +149,20 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.setupCell(withSection: .browseAllProducts) {
-                
+                self.delegate?.moveToMorePage(withTitle: "Browse Products")
             }
             cell.delegate = self.delegate
             return cell
             // MARK: - header sections end
+            
+        case .carousel:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CarouselTableCell.identifier, for: indexPath) as? CarouselTableCell else {
+                return UITableViewCell()
+            }
+            cell.carouselDatas = storeDatas
+            
+            cell.setupTable()
+            return cell
             
         case .categories:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CatTableCell.identifier, for: indexPath) as? CatTableCell else {
@@ -176,8 +182,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.delegate = self
             cell.productDatas = productDatas
             cell.setupTable()
-            
-            cell.scrollDirection = .horizontal
             
             return cell
             
@@ -201,9 +205,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case .saleTitle, .browseAllProductsTitle:
             return UITableView.automaticDimension
         case .categories:
-            return 200
+            return 160
         case .sale:
-            return 350
+            return 340
         case .browseAllProducts:
             return 430
             
@@ -216,33 +220,31 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: PageTransitionDelegate {
     
-    
-    func moveToOrderProductPage() {
-        
-    }
-    
     func moveToCategoryPage(selectedCategory: String?) {
         let vc = CategoryController()
-        
+        vc.hidesBottomBarWhenPushed = true
         vc.selectedCategory = selectedCategory
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    // move to detail
     func moveToDetailPage(data: Product?) {
         let vc = DetailItemController()
-        
+        // disable tabbar
+        vc.hidesBottomBarWhenPushed = true
         guard let product = data else {return}
+        // convert to array product
         vc.detailDatas = ProductsModel(products: [product])
         navigationController?.pushViewController(vc, animated: true)
         
     }
     
-    func moveToMorePage(withTitle title: String) {
+    func moveToMorePage(withTitle title: String?) {
         switch title {
         case "Sale":
             moveToMoreSalePage(data: productDatas)
         case "Browse Products":
-            moveToBrowseAllProductsPage()
+            moveToBrowseAllProductsPage(data: productDatas)
             
         default:
             break

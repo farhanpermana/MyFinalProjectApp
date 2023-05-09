@@ -12,7 +12,7 @@ protocol ApiServiceStoreProtocol {
     func fetchItem()
 }
 
-class HomeViewModel: ApiServiceStoreProtocol {
+class StoreViewModel: ApiServiceStoreProtocol {
     
     private var apiService: ApiService?
     private var urlString = "http://localhost:3003/store"

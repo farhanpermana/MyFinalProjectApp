@@ -16,17 +16,6 @@ class SaleCollectionTableCell: UITableViewCell {
     var productViewModel: ProductsViewModel?
     var productDatas: ProductsModel?
     
-    
-    // scrolldirection
-    var scrollDirection: UICollectionView.ScrollDirection = .horizontal {
-        didSet {
-            if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                layout.scrollDirection = scrollDirection
-            }
-        
-        }
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,13 +24,15 @@ class SaleCollectionTableCell: UITableViewCell {
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         
-//        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 0
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(UINib(nibName: "ListsCollectionCell", bundle: nil), forCellWithReuseIdentifier: ListsCollectionCell.identifier)
         collectionView.layer.masksToBounds = true
-
+        
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
     
@@ -53,14 +44,14 @@ class SaleCollectionTableCell: UITableViewCell {
             collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
-        }
+    }
     
-
+    
     func setupTable() {
         contentView.addSubview(collectionView)
         setupCollectionView()
         collectionView.backgroundColor = UIColor.lightGray
-        collectionView.reloadData()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -81,13 +72,13 @@ class SaleCollectionTableCell: UITableViewCell {
         }
     }
     
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
 
 extension SaleCollectionTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -100,10 +91,10 @@ extension SaleCollectionTableCell: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListsCollectionCell.identifier, for: indexPath) as? ListsCollectionCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListsCollectionCell.identifier, for: indexPath) as? ListsCollectionCell else { return UICollectionViewCell() }
+        
         if let productDataItem = productDatas?.products.filter({ $0.price != $0.discountPrice })[indexPath.row] {
-            
+            cell.hideSkeletonAnim()
             cell.configure(data: productDataItem)
             cell.setupCell()
         }

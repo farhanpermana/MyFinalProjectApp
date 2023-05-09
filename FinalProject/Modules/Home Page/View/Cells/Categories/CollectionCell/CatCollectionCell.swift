@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CatCollectionCell: UICollectionViewCell {
     
@@ -27,17 +28,18 @@ class CatCollectionCell: UICollectionViewCell {
         bgView.layer.cornerRadius = 8
         bgImgView.layer.cornerRadius = 20
         catImg.layer.cornerRadius = 20
-        bgView.layer.shadowColor = UIColor.black.cgColor
-        bgView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        bgView.layer.shadowOpacity = 0.2
-        bgView.layer.shadowRadius = 4
+        
         bgView.layer.masksToBounds = false
-        catTitle.font = catTitle.font.withSize(12)
+        catTitle.font = catTitle.font.withSize(11)
+        
+        catTitle.text = catTitle.text?.capitalized
+    
     
     }
     func configureCell(data: CategoryElement?) {
         catTitle.text = data?.name
-        catImg.imageFromURL(urlString: data?.icon ?? "", size: CGSize(width: 50, height: 50))
+        catImg.kf.setImage(with: URL(string: data?.icon ?? ""))
+    
     }
 
 }

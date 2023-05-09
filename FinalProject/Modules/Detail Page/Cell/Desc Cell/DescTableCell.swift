@@ -39,7 +39,7 @@ class DescTableCell: UITableViewCell {
         productDescLabel.text = data?.description
         categoryLabel.text = data?.category
         typeLabel.text = data?.type
-        priceLabel.text = "$\(data?.price ?? 0)"
+        priceLabel.text = "$\(data?.discountPrice ?? 0)"
     }
     
 

@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sdd-Br-HL5">
                         <rect key="frame" x="0.0" y="0.0" width="153" height="321"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="Y55-l3-CnJ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="Y55-l3-CnJ">
                                 <rect key="frame" x="0.0" y="0.0" width="153" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="ovy-8d-gBP"/>
@@ -94,6 +94,9 @@
                 <constraint firstAttribute="bottom" secondItem="sdd-Br-HL5" secondAttribute="bottom" id="o4x-aw-MJm"/>
             </constraints>
             <size key="customSize" width="153" height="321"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="afterPrice" destination="5G3-qH-ye3" id="Tnh-Om-x7u"/>
                 <outlet property="beforePrice" destination="R6J-mD-3Tm" id="jgp-Oe-2Tu"/>

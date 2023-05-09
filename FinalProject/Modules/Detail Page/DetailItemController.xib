@@ -20,19 +20,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kj4-qL-v2F">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="716"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJX-XR-jDQ">
+                    <rect key="frame" x="30" y="783" width="333" height="35"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Buy"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kj4-qL-v2F" secondAttribute="trailing" id="1d4-dg-JDb"/>
+                <constraint firstItem="CJX-XR-jDQ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="CHn-hL-xcH"/>
                 <constraint firstItem="kj4-qL-v2F" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="K61-8y-hL7"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kj4-qL-v2F" secondAttribute="bottom" id="MWI-tn-kAG"/>
                 <constraint firstItem="kj4-qL-v2F" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="MYW-yf-dW4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="CJX-XR-jDQ" secondAttribute="trailing" constant="30" id="Op4-aH-B2n"/>
+                <constraint firstItem="CJX-XR-jDQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="RBW-hM-xPf"/>
+                <constraint firstItem="CJX-XR-jDQ" firstAttribute="top" secondItem="kj4-qL-v2F" secondAttribute="bottom" constant="8" id="qeM-bO-TZj"/>
             </constraints>
-            <point key="canvasLocation" x="36" y="20"/>
+            <point key="canvasLocation" x="35.877862595419849" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>

@@ -17,9 +17,11 @@ class SignUpController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        signUpBtn.tintColor = UIColor(rgb: 0x75001d)
+        loginBtn.tintColor = UIColor(rgb: 0x75001d)
+        
     }
+
 
     @IBAction func signUpBtnTapped(_ sender: Any) {
 

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ApiServiceProtocol {
-
+    
     func callAPI<T:Codable>(url urlString: String, model:T.Type, completion: @escaping (Result<T,Error>) -> Void)
 }
 

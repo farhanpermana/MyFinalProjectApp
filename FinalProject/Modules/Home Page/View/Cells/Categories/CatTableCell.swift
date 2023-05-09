@@ -25,7 +25,7 @@ class CatTableCell: UITableViewCell {
     
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(UINib(nibName: "CatCollectionCell", bundle: nil), forCellWithReuseIdentifier: CatCollectionCell.identifier)
         collectionView.layer.masksToBounds = false
@@ -40,10 +40,10 @@ class CatTableCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         
         layout.sectionInset = UIEdgeInsets(top: 1, left: 12, bottom: 1, right: 12)
-        layout.minimumInteritemSpacing = 0
+        layout.minimumInteritemSpacing = 10
         let screenSize = self.frame.width - layout.sectionInset.left -
         layout.sectionInset.right - layout.minimumInteritemSpacing
-        layout.itemSize = CGSize(width: screenSize / 5, height: 70)
+        layout.itemSize = CGSize(width: screenSize / 6.5, height: 70)
         
         return layout
     }
@@ -64,10 +64,10 @@ class CatTableCell: UITableViewCell {
         contentView.addSubview(collectionView)
         setupCollectionView()
         collectionView.backgroundColor = UIColor.clear
-        collectionView.reloadData()
+
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.isScrollEnabled = false
+        collectionView.isScrollEnabled = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -101,9 +101,7 @@ extension CatTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlow
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("category clicked")
         
-        guard let selectedCategory = catDatas?.category.categories[indexPath.row].name else {
-            return
-        }
+        guard let selectedCategory = catDatas?.category.categories[indexPath.row].name else {return}
         delegate?.moveToCategoryPage(selectedCategory: selectedCategory)
         
     }

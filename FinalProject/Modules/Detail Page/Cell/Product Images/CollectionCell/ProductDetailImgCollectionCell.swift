@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 class ProductDetailImgCollectionCell: UICollectionViewCell {
     
@@ -28,7 +28,9 @@ class ProductDetailImgCollectionCell: UICollectionViewCell {
     
     func configureProductDetail(data: Product?) {
 //        productDetailImg.sd_setImage(with: URL(string: data?.images[0] ?? ""), completed: nil)
-    productDetailImg.imageFromURL(urlString: data?.images[0] ?? "", size: CGSize(width: 50, height: 50) )
+//    productDetailImg.imageFromURL(urlString: data?.images[0] ?? "", size: CGSize(width: 50, height: 50) )
+        productDetailImg.kf.setImage(with: URL(string: data?.images[0] ?? ""))
+    
     }
 
 

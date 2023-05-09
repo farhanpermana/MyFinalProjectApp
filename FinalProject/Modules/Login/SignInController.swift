@@ -18,10 +18,21 @@ class SignInController: UIViewController {
     
     @IBOutlet weak var signUpBtn: UIButton!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var forgot: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        signInBtn.tintColor = UIColor(rgb: 0x75001d)
+        titleLabel.textColor = UIColor(rgb: 0x75001d)
+        signUpBtn.tintColor = UIColor(rgb: 0x75001d)
+        forgot.tintColor = UIColor(rgb: 0x75001d)
+        
+        
     }
 
 
@@ -33,7 +44,7 @@ class SignInController: UIViewController {
                 print("Error login", error?.localizedDescription ?? "")
             } else {
                 print("Login success")
-//                self.performSegue(withIdentifier: "loginToHome", sender: nil)
+
                 self.showHomeController()
             }
         }

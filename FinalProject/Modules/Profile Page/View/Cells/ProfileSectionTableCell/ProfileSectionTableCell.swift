@@ -15,7 +15,6 @@ class ProfileSectionTableCell: UITableViewCell {
     
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var profileImg: UIImageView!
-    @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var logoutBtn: UIButton!
     
@@ -25,8 +24,10 @@ class ProfileSectionTableCell: UITableViewCell {
     }
     
     func setupCell() {
-        bgView.layer.backgroundColor = UIColor(rgb: 0x7d9abb).cgColor
+        bgView.layer.backgroundColor = UIColor(rgb: 0x75001d).cgColor
         profileImg.layer.cornerRadius = profileImg.frame.height / 2
+        emailLbl.textColor = UIColor.white
+        logoutBtn.tintColor = UIColor.white
         emailLbl.text = Auth.auth().currentUser?.email
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProductImgTableCell: UITableViewCell {
     
@@ -45,7 +46,7 @@ class ProductImgTableCell: UITableViewCell {
         contentView.addSubview(collectionView)
         setupCollectionView()
         collectionView.backgroundColor = UIColor.clear
-        collectionView.reloadData()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -72,8 +73,7 @@ extension ProductImgTableCell: UICollectionViewDataSource, UICollectionViewDeleg
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductDetailImgCollectionCell.identifier, for: indexPath) as? ProductDetailImgCollectionCell else { return UICollectionViewCell() }
         cell.setupProductDetailImgCollectionCell()
 
-//        cell.productDetailImg.sd_setImage(with: URL(string: productDetailImgDatas?.products.first?.images[indexPath.row] ?? ""), completed: nil)
-        cell.productDetailImg.imageFromURL(urlString: productDetailImgDatas?.products.first?.images[indexPath.row] ?? "", size: CGSize(width: 200, height: 200))
+        cell.productDetailImg.kf.setImage(with: URL(string: productDetailImgDatas?.products.first?.images[indexPath.row] ?? ""))
         return cell
     }
     

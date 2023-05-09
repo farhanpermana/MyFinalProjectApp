@@ -14,7 +14,7 @@ struct StoreModel: Codable {
     
 }
 
-// MARK: - WelcomeCarousel
+// MARK: - Carousel
 struct Carousel: Codable {
     let carouselID: Int
     let carousels: [CarouselElement]

@@ -21,7 +21,8 @@ class MenuTableCell: UITableViewCell {
     }
     
     func setupCell() {
-        
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        iconLabel.tintColor = UIColor(rgb: 0x75001d)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
