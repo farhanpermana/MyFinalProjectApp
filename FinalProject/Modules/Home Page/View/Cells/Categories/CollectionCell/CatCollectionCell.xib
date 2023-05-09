@@ -29,7 +29,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUj-xL-RO8">
                                 <rect key="frame" x="1" y="1" width="134" height="50"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vans" translatesAutoresizingMaskIntoConstraints="NO" id="JA3-lZ-8pp">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vans" translatesAutoresizingMaskIntoConstraints="NO" id="JA3-lZ-8pp">
                                         <rect key="frame" x="0.0" y="0.0" width="134" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="28T-qd-mTf"/>

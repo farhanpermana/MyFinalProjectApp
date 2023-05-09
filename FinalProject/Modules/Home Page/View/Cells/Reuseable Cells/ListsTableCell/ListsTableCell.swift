@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SkeletonView
 
 class ListsTableCell: UITableViewCell {
     
@@ -22,10 +23,12 @@ class ListsTableCell: UITableViewCell {
     
     @IBOutlet weak var price: UILabel!
     
+    @IBOutlet weak var bgView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
+        imgLabel.isSkeletonable = true
     }
     
     func setupCell() {
@@ -33,11 +36,14 @@ class ListsTableCell: UITableViewCell {
     }
     
     func configureSaleProducts(data: Product?) {
-        imgLabel.sd_setImage(with: URL(string: data?.thumbnail ?? ""), completed: nil)
+        bgView.showSkeleton()
+//        imgLabel.sd_setImage(with: URL(string: data?.thumbnail ?? ""), completed: nil)
+        imgLabel.imageFromURL(urlString: data?.thumbnail ?? "", size: CGSize(width: 50, height: 50) )
         productTitle.text = data?.title
         productType.text = data?.type
         category.text = data?.category
-        price.text = "Rp. \(data?.price ?? 0)"
+        price.text = "$\(data?.price ?? 0)"
+            bgView.hideSkeleton()
     }
     
 }

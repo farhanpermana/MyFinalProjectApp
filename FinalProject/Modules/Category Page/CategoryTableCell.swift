@@ -16,6 +16,8 @@ class CategoryTableCell: UITableViewCell {
     var productViewModel: ProductsViewModel?
     var productDatas: ProductsModel?
     
+    var selectedCategory: String?
+    
     
     // scrolldirection
     var scrollDirection: UICollectionView.ScrollDirection = .horizontal {
@@ -92,6 +94,7 @@ class CategoryTableCell: UITableViewCell {
 
 extension CategoryTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return productDatas?.products.count ?? 0
         return productDatas?.products.count ?? 0
     
         
@@ -104,6 +107,7 @@ extension CategoryTableCell: UICollectionViewDataSource, UICollectionViewDelegat
         
         cell.setupCell()
         cell.configure(data: productDatas?.products[indexPath.row])
+//        cell.configure(data: category)
         
         return cell
     }

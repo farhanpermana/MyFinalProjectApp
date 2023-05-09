@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SkeletonView
 
 class ListsCollectionCell: UICollectionViewCell {
     
@@ -32,7 +33,7 @@ class ListsCollectionCell: UICollectionViewCell {
         bgView.layer.cornerRadius = 10
         bgView.layer.masksToBounds = true
         
-        // beforeprice strikethrough
+          // beforeprice strikethrough
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: beforePrice.text!)
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
         beforePrice.attributedText = attributeString
@@ -40,18 +41,22 @@ class ListsCollectionCell: UICollectionViewCell {
         afterPrice.textColor = UIColor.red
         // title
         titleLabel.textColor = UIColor.black
+        
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 12)
         // description
         descLabel.textColor = UIColor.black
+        descLabel.numberOfLines = 2
         
         
     }
     
     func configure(data: Product?) {
-        productImg.sd_setImage(with: URL(string: data?.thumbnail ?? ""), completed: nil)
+        
+        productImg.imageFromURL(urlString: data?.thumbnail ?? "", size: CGSize(width: 160, height: 210))
         
         titleLabel.text = data?.title
-        beforePrice.text = "Rp. \(data?.price ?? 0)"
-        afterPrice.text = "Rp. \(data?.discountPrice ?? 0)"
+        beforePrice.text = "$\(data?.price ?? 0)"
+        afterPrice.text = "$\(data?.discountPrice ?? 0)"
         descLabel.text = data?.description
 
     }

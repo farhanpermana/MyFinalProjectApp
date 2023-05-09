@@ -11,41 +11,41 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ListsCollectionCell" customModule="FinalProject" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="153" height="282"/>
+            <rect key="frame" x="0.0" y="0.0" width="153" height="321"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="153" height="282"/>
+                <rect key="frame" x="0.0" y="0.0" width="153" height="321"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sdd-Br-HL5">
-                        <rect key="frame" x="0.0" y="0.0" width="153" height="282"/>
+                        <rect key="frame" x="0.0" y="0.0" width="153" height="321"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="Y55-l3-CnJ">
-                                <rect key="frame" x="0.0" y="0.0" width="153" height="165"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="Y55-l3-CnJ">
+                                <rect key="frame" x="0.0" y="0.0" width="153" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="165" id="ovy-8d-gBP"/>
+                                    <constraint firstAttribute="height" constant="200" id="ovy-8d-gBP"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUv-EN-cfk">
-                                <rect key="frame" x="2" y="219.33333333333334" width="149" height="17"/>
+                                <rect key="frame" x="2" y="254.33333333333337" width="149" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$666" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6J-mD-3Tm">
-                                <rect key="frame" x="2" y="177" width="149" height="14.333333333333343"/>
+                                <rect key="frame" x="2" y="212" width="149" height="14.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="desc label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98P-Yz-sT2">
-                                <rect key="frame" x="2" y="240.33333333333334" width="149" height="14.333333333333343"/>
+                                <rect key="frame" x="2" y="275.33333333333331" width="149" height="14.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="63" translatesAutoresizingMaskIntoConstraints="NO" id="R8n-xQ-TW0">
-                                <rect key="frame" x="2" y="195.33333333333334" width="149" height="20"/>
+                                <rect key="frame" x="2" y="230.33333333333334" width="149" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$333" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G3-qH-ye3">
                                         <rect key="frame" x="0.0" y="0.0" width="66" height="20"/>
@@ -93,7 +93,7 @@
                 <constraint firstAttribute="trailing" secondItem="sdd-Br-HL5" secondAttribute="trailing" id="lki-lB-ikY"/>
                 <constraint firstAttribute="bottom" secondItem="sdd-Br-HL5" secondAttribute="bottom" id="o4x-aw-MJm"/>
             </constraints>
-            <size key="customSize" width="153" height="282"/>
+            <size key="customSize" width="153" height="321"/>
             <connections>
                 <outlet property="afterPrice" destination="5G3-qH-ye3" id="Tnh-Om-x7u"/>
                 <outlet property="beforePrice" destination="R6J-mD-3Tm" id="jgp-Oe-2Tu"/>
@@ -102,7 +102,7 @@
                 <outlet property="productImg" destination="Y55-l3-CnJ" id="4fG-0Q-JM7"/>
                 <outlet property="titleLabel" destination="aUv-EN-cfk" id="XpF-4b-6Fc"/>
             </connections>
-            <point key="canvasLocation" x="115.26717557251908" y="73.239436619718319"/>
+            <point key="canvasLocation" x="115.26717557251908" y="67.25352112676056"/>
         </collectionViewCell>
     </objects>
     <resources>

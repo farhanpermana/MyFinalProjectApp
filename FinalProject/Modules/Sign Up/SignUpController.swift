@@ -22,6 +22,7 @@ class SignUpController: UIViewController {
     }
 
     @IBAction func signUpBtnTapped(_ sender: Any) {
+
         guard let emailtextfield = emailTextField.text else {
             let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Email is not valid"])
             print(error)
@@ -37,7 +38,7 @@ class SignUpController: UIViewController {
                 print("Error sign up", error?.localizedDescription ?? "")
             } else {
                 print("Sign up success")
-                self.showHomeController()
+                self.showSignInController()
             }
         }
     

@@ -14,8 +14,10 @@ class CatTableCell: UITableViewCell {
     var catDatas: StoreModel?
     var catProduct: ProductsModel?
     
+    var selectedCategory: String?
+    
     weak var delegate: PageTransitionDelegate?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,19 +30,20 @@ class CatTableCell: UITableViewCell {
         collectionView.register(UINib(nibName: "CatCollectionCell", bundle: nil), forCellWithReuseIdentifier: CatCollectionCell.identifier)
         collectionView.layer.masksToBounds = false
         collectionView.layer.cornerRadius = 40
-        collectionView.backgroundColor = .red
+        
+        collectionView.backgroundColor = .clear
         
         return collectionView
     }()
     
     func setupLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-    
+        
         layout.sectionInset = UIEdgeInsets(top: 1, left: 12, bottom: 1, right: 12)
         layout.minimumInteritemSpacing = 0
-        let screenSize = self.bounds.width - layout.sectionInset.left -
+        let screenSize = self.frame.width - layout.sectionInset.left -
         layout.sectionInset.right - layout.minimumInteritemSpacing
-        layout.itemSize = CGSize(width: screenSize / 4.5, height: 100)
+        layout.itemSize = CGSize(width: screenSize / 5, height: 70)
         
         return layout
     }
@@ -65,24 +68,24 @@ class CatTableCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isScrollEnabled = false
-//        delegate = HomeViewController() as? PageTransitionDelegate
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
 
 extension CatTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CatCollectionCell.identifier, for: indexPath) as? CatCollectionCell else {
+        guard let category = catDatas?.category.categories[indexPath.row],
+              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CatCollectionCell.identifier, for: indexPath) as? CatCollectionCell else {
             return UICollectionViewCell()
         }
-        let category = catDatas?.category.categories[indexPath.row]
+        
         cell.configureCell(data: category)
         cell.setupCell()
         
@@ -97,12 +100,11 @@ extension CatTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlow
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("category clicked")
-//        delegate?.moveToCategoryPage()
-
+        
         guard let selectedCategory = catDatas?.category.categories[indexPath.row].name else {
-                return
-            }
-            delegate?.moveToCategoryPage(selectedCategory: selectedCategory)
-
+            return
+        }
+        delegate?.moveToCategoryPage(selectedCategory: selectedCategory)
+        
     }
 }

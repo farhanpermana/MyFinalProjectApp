@@ -58,7 +58,6 @@ extension DetailItemController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DescTableCell.identifier, for: indexPath) as? DescTableCell else { return UITableViewCell() }
             cell.setupDescTableCell()
             cell.configureProductDesc(data: detailDatas?.products[indexPath.row])
-//            cell.productNameLabel.text = detailDatas?.products[indexPath.row].title
             return cell
             //        case .order:
             //            let cell = tableView.dequeueReusableCell(withIdentifier: ProductOrderTableCell.identifier, for: indexPath) as! ProductOrderTableCell
@@ -80,7 +79,7 @@ extension DetailItemController: UITableViewDelegate, UITableViewDataSource {
             case .image:
                 return 300
             case .description:
-                return 150
+                return 400
             case .order:
                 return 300
             default:

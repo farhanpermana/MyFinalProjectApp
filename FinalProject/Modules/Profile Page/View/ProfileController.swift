@@ -14,7 +14,7 @@ enum PageSections: Int {
 }
 
 class ProfileController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -31,22 +31,15 @@ class ProfileController: UIViewController {
     }
     
     @objc func logoutBtnTapped(_ sender: Any) {
-     
+        let firebaseAuth = Auth.auth()
         do {
-            try Auth.auth().signOut()
-            print("logged out")
+            try firebaseAuth.signOut()
+            showSignInController()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
-        catch {
-            print("User hasn't logged out")
-        }
-        self.showSignInController()
-        removeFromParent()
-
         
     }
-    
-    
-    
 }
 
 extension ProfileController: UITableViewDelegate, UITableViewDataSource {
@@ -58,7 +51,7 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
             return 4 // menus section
         default:
             return 0
-        
+            
         }
     }
     
@@ -67,11 +60,12 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
         switch sections {
         case .profile:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileSectionTableCell.identifier, for: indexPath) as? ProfileSectionTableCell else { return UITableViewCell() }
-            cell.logoutBtn.addTarget(self, action: #selector(logoutBtnTapped(_:)), for: .touchUpInside)
+            cell.logoutBtn.addTarget(self, action: #selector(self.logoutBtnTapped(_:)), for: .touchUpInside)
             cell.setupCell()
             return cell
         case .menus:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableCell.identifier, for: indexPath) as? MenuTableCell else { return UITableViewCell() }
+            cell.setupCell()
             return cell
         default:
             return UITableViewCell()
@@ -99,8 +93,9 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
 extension UIViewController {
     func showHomeController() {
         let vc = HomeViewController()
-
+        let tabbar = TabBar()
+        tabbar.viewControllers = [vc]
         self.navigationController?.pushViewController(vc, animated: true)
         removeFromParent()
-        }
+    }
 }

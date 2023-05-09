@@ -15,7 +15,6 @@ enum HomeSection: Int {
     case sale = 3
     case browseAllProductsTitle = 4
     case browseAllProducts = 5
-    
 }
 
 protocol PageTransitionDelegate: AnyObject {
@@ -75,7 +74,7 @@ class HomeViewController: UIViewController {
         //navbar color
         navigationController?.navigationBar.backgroundColor = UIColor(rgb: 0x9cbee6)
         navigationController?.navigationBar.barTintColor = UIColor(rgb: 0x9cbee6)
-        navigationController?.navigationBar.tintColor = UIColor(rgb: 0x9cbee6)
+//        navigationController?.navigationBar.tintColor = UIColor(rgb: 0x9cbee6)
         
     }
     
@@ -204,9 +203,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case .categories:
             return 200
         case .sale:
-            return 290
+            return 350
         case .browseAllProducts:
-            return 400
+            return 430
             
         default:
             return 0
@@ -224,16 +223,10 @@ extension HomeViewController: PageTransitionDelegate {
     
     func moveToCategoryPage(selectedCategory: String?) {
         let vc = CategoryController()
-        guard let selectedCategory = selectedCategory else {
-            // handle case where selected category is nil
-            return
-        }
-        let filteredProducts = productDatas?.products.filter({ $0.category == selectedCategory })
-        vc.productDatas = ProductsModel(products: filteredProducts ?? [])
+        
+        vc.selectedCategory = selectedCategory
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
     
     func moveToDetailPage(data: Product?) {
         let vc = DetailItemController()
@@ -254,9 +247,5 @@ extension HomeViewController: PageTransitionDelegate {
         default:
             break
         }
-        
     }
-    
-    
-    
 }

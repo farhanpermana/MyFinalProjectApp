@@ -92,9 +92,8 @@ class SaleCollectionTableCell: UITableViewCell {
 
 extension SaleCollectionTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let countProduct = productDatas?.products.filter { $0.price != $0.discountPrice } ?? []
-//        let countProduct = productDatas?.filter { $0.products.first?.price != $0.products.first?.discountPrice }
-        let count = countProduct.count
+        let countProduct = productDatas?.products.filter { $0.price != $0.discountPrice }
+        let count = countProduct?.count ?? 0
         print("sale count:", count)
         return count
         
@@ -103,11 +102,11 @@ extension SaleCollectionTableCell: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
          guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListsCollectionCell.identifier, for: indexPath) as? ListsCollectionCell else { return UICollectionViewCell() }
-
-        
-        cell.setupCell()
-        cell.configure(data: productDatas?.products[indexPath.row])
-        
+        if let productDataItem = productDatas?.products.filter({ $0.price != $0.discountPrice })[indexPath.row] {
+            
+            cell.configure(data: productDataItem)
+            cell.setupCell()
+        }
         return cell
     }
     
@@ -116,11 +115,11 @@ extension SaleCollectionTableCell: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2.2, height: 280)
+        return CGSize(width: collectionView.frame.width / 2.2, height: 330)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let product = productDatas?.products[indexPath.row]
+        let filteredProducts = productDatas?.products.filter { $0.price != $0.discountPrice }
+        let product = filteredProducts?[indexPath.row]
         
         delegate?.moveToDetailPage(data: product)
         

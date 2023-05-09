@@ -39,9 +39,6 @@
                         <rect key="frame" x="250" y="30" width="54" height="35"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="rectangle.portrait.and.arrow.right" catalog="system"/>
-                        <connections>
-                            <action selector="logoutBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="l3q-t3-Wft"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -59,7 +56,7 @@
             <connections>
                 <outlet property="bgView" destination="H2p-sc-9uM" id="pkQ-b8-51W"/>
                 <outlet property="emailLbl" destination="Zu8-9d-IhI" id="MrY-8d-ZVX"/>
-                <outlet property="logoutBtn" destination="PnL-Uu-oEA" id="BWr-si-c4O"/>
+                <outlet property="logoutBtn" destination="PnL-Uu-oEA" id="wZY-Y3-cMF"/>
                 <outlet property="nameLbl" destination="VLY-5Y-3Hu" id="6bj-DL-6uO"/>
                 <outlet property="profileImg" destination="sl9-ac-EGG" id="VhT-Sb-Keb"/>
             </connections>

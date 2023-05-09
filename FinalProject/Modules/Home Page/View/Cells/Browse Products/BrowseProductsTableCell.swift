@@ -78,15 +78,18 @@ class BrowseProductsTableCell: UITableViewCell {
 
 extension BrowseProductsTableCell: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return browseProductsDatas?.products.count ?? 0
+        let count = browseProductsDatas?.products.count ?? 0
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListsCollectionCell.identifier, for: indexPath) as? ListsCollectionCell else {
+        
+        guard let browse = browseProductsDatas?.products[indexPath.row],
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ListsCollectionCell.identifier, for: indexPath) as? ListsCollectionCell else {
         return UICollectionViewCell()
         }
         cell.setupCell()
-        cell.configure(data: browseProductsDatas?.products[indexPath.row])
+        cell.configure(data: browse)
         
         return cell
     }

@@ -32,14 +32,12 @@ class CatCollectionCell: UICollectionViewCell {
         bgView.layer.shadowOpacity = 0.2
         bgView.layer.shadowRadius = 4
         bgView.layer.masksToBounds = false
+        catTitle.font = catTitle.font.withSize(12)
     
     }
     func configureCell(data: CategoryElement?) {
         catTitle.text = data?.name
-        catImg.sd_setImage(with: URL(string: data?.icon ?? "cat"), placeholderImage: UIImage(named: "cat"))
-
-//        catImg.image = UIImage(named: data?.image ?? "cat")
-        
+        catImg.imageFromURL(urlString: data?.icon ?? "", size: CGSize(width: 50, height: 50))
     }
 
 }

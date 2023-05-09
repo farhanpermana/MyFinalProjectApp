@@ -29,17 +29,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xIX-j7-6jV">
-                    <rect key="frame" x="16" y="190" width="361" height="34"/>
+                    <rect key="frame" x="16" y="200" width="361" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qll-bb-Qft">
-                    <rect key="frame" x="16" y="264" width="361" height="34"/>
+                    <rect key="frame" x="16" y="254" width="361" height="34"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFt-kk-MT4">
-                    <rect key="frame" x="16" y="358" width="361" height="40"/>
+                    <rect key="frame" x="16" y="318" width="361" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="h2j-jB-vFZ"/>
                     </constraints>
@@ -50,7 +50,7 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoZ-YB-j32">
-                    <rect key="frame" x="66" y="448" width="261" height="34.333333333333314"/>
+                    <rect key="frame" x="66" y="408" width="261" height="34.333333333333314"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtf-l1-qWd">
                             <rect key="frame" x="0.0" y="0.0" width="195" height="34.333333333333336"/>
@@ -72,20 +72,20 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="xIX-j7-6jV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="05B-Ov-6cw"/>
                 <constraint firstItem="YoZ-YB-j32" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="66" id="1lS-ll-wNo"/>
                 <constraint firstItem="qUf-Ec-NkE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="55" id="1mx-rk-Msx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YoZ-YB-j32" secondAttribute="trailing" constant="66" id="4Da-ZG-GXA"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xIX-j7-6jV" secondAttribute="trailing" constant="16" id="Br0-pm-bNL"/>
+                <constraint firstItem="Qll-bb-Qft" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="GOw-ft-4nV"/>
+                <constraint firstItem="xIX-j7-6jV" firstAttribute="top" secondItem="qUf-Ec-NkE" secondAttribute="bottom" constant="50" id="GVF-WP-4XD"/>
                 <constraint firstItem="YoZ-YB-j32" firstAttribute="top" secondItem="bFt-kk-MT4" secondAttribute="bottom" constant="50" id="H62-pm-HTD"/>
+                <constraint firstItem="Qll-bb-Qft" firstAttribute="top" secondItem="xIX-j7-6jV" secondAttribute="bottom" constant="20" id="IY7-xe-SiJ"/>
                 <constraint firstItem="qUf-Ec-NkE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Zc9-kc-OIg"/>
                 <constraint firstItem="bFt-kk-MT4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Zcj-gt-ERD"/>
-                <constraint firstItem="bFt-kk-MT4" firstAttribute="top" secondItem="Qll-bb-Qft" secondAttribute="bottom" constant="60" id="hJV-te-lk2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Qll-bb-Qft" secondAttribute="trailing" constant="16" id="aj1-DM-9ux"/>
+                <constraint firstItem="bFt-kk-MT4" firstAttribute="top" secondItem="Qll-bb-Qft" secondAttribute="bottom" constant="30" id="eeK-ML-A4U"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bFt-kk-MT4" secondAttribute="trailing" constant="16" id="klo-xi-h3a"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Qll-bb-Qft" secondAttribute="trailing" constant="16" id="kxg-GY-Ezw"/>
-                <constraint firstItem="xIX-j7-6jV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="nx0-gD-RZZ"/>
-                <constraint firstItem="Qll-bb-Qft" firstAttribute="top" secondItem="xIX-j7-6jV" secondAttribute="bottom" constant="40" id="uXu-QK-574"/>
-                <constraint firstItem="xIX-j7-6jV" firstAttribute="top" secondItem="qUf-Ec-NkE" secondAttribute="bottom" constant="40" id="vth-3I-pPT"/>
-                <constraint firstItem="Qll-bb-Qft" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="yGe-gU-XKi"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xIX-j7-6jV" secondAttribute="trailing" constant="16" id="oAg-wo-pGh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qUf-Ec-NkE" secondAttribute="trailing" constant="16" id="ynz-sm-Ags"/>
             </constraints>
             <point key="canvasLocation" x="36" y="-1"/>

@@ -13,7 +13,6 @@ protocol ApiServiceProtocol {
 }
 
 class ApiService: ApiServiceProtocol {
-
     
     func callAPI<T>(url urlString: String, model: T.Type, completion: @escaping (Result<T, Error>) -> Void) where T : Decodable, T : Encodable {
         guard let url = URL(string: urlString) else {return}

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileSectionTableCell: UITableViewCell {
     
@@ -21,14 +22,14 @@ class ProfileSectionTableCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-
     }
     
     func setupCell() {
         bgView.layer.backgroundColor = UIColor(rgb: 0x7d9abb).cgColor
         profileImg.layer.cornerRadius = profileImg.frame.height / 2
+        emailLbl.text = Auth.auth().currentUser?.email
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
