@@ -65,9 +65,8 @@
                     <constraint firstAttribute="bottom" secondItem="bBr-Al-U8c" secondAttribute="bottom" constant="33" id="HxF-3m-EEb"/>
                     <constraint firstItem="m8m-jU-zMU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="WwA-nd-4Dr"/>
                     <constraint firstItem="bBr-Al-U8c" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="33" id="YeF-Tp-cid"/>
-                    <constraint firstItem="m8m-jU-zMU" firstAttribute="leading" secondItem="VF0-b1-AUR" secondAttribute="trailing" constant="16" id="agg-7f-xMi"/>
-                    <constraint firstAttribute="bottom" secondItem="VF0-b1-AUR" secondAttribute="bottom" id="l0f-vT-Ily"/>
                     <constraint firstItem="VF0-b1-AUR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="oRd-52-gsH"/>
+                    <constraint firstItem="m8m-jU-zMU" firstAttribute="leading" secondItem="VF0-b1-AUR" secondAttribute="trailing" constant="16" id="qgL-OT-ZWY"/>
                     <constraint firstAttribute="trailing" secondItem="bBr-Al-U8c" secondAttribute="trailing" constant="16" id="w0B-ZN-W2d"/>
                 </constraints>
             </tableViewCellContentView>

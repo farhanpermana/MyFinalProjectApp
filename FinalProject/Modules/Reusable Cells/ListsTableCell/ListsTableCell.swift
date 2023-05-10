@@ -39,9 +39,10 @@ class ListsTableCell: UITableViewCell {
     
     func configureSaleProducts(data: Product?) {
 //        bgView.showSkeleton()
-//        imgLabel.imageFromURL(urlString: data?.thumbnail ?? "", size: CGSize(width: 50, height: 60) )
-//        imgLabel.sd_setImage(with: URL(string: data?.thumbnail ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
-        imgLabel.kf.setImage(with: URL(string: data?.thumbnail ?? ""))
+        
+        // reduce image for avoid high memory
+        let processor = ResizingImageProcessor(referenceSize: CGSize(width: 150, height: 150))
+        imgLabel.kf.setImage(with: URL(string: data?.thumbnail ?? ""),options: [.processor(processor)])
         productTitle.text = data?.title
         productType.text = data?.type
         category.text = data?.category

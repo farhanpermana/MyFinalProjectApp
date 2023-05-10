@@ -16,6 +16,7 @@ class DetailItemController: UIViewController {
     static let identifier = "DetailItemController"
     
     @IBOutlet weak var detailTV: UITableView!
+    @IBOutlet weak var addToCartButton: UIButton!
     
     
     weak var moveToDetailDelegate: PageTransitionDelegate?
@@ -38,10 +39,8 @@ class DetailItemController: UIViewController {
         detailTV.dataSource = self
         
         detailTV.allowsSelection = false
-    
+        addToCartButton.tintColor = UIColor(rgb: 0x75001d)
     }
-    
-    
 }
 
 extension DetailItemController: UITableViewDelegate, UITableViewDataSource {
@@ -53,17 +52,15 @@ extension DetailItemController: UITableViewDelegate, UITableViewDataSource {
             
             cell.productDetailImgDatas = detailDatas
             
-            
             cell.setupTable()
             return cell
+            
         case .description:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: DescTableCell.identifier, for: indexPath) as? DescTableCell else { return UITableViewCell() }
             cell.setupDescTableCell()
             cell.configureProductDesc(data: detailDatas?.products[indexPath.row])
             return cell
-            //        case .order:
-            //            let cell = tableView.dequeueReusableCell(withIdentifier: ProductOrderTableCell.identifier, for: indexPath) as! ProductOrderTableCell
-            //            return cell
+            
         default:
             return UITableViewCell()
         }

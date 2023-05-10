@@ -11,29 +11,27 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProductDetailImgCollectionCell" customModule="FinalProject" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="283" height="355"/>
+            <rect key="frame" x="0.0" y="0.0" width="283" height="407"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="283" height="355"/>
+                <rect key="frame" x="0.0" y="0.0" width="283" height="407"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNT-p2-AdM">
-                        <rect key="frame" x="0.0" y="0.0" width="283" height="355"/>
+                        <rect key="frame" x="0.0" y="0.0" width="283" height="407"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner" translatesAutoresizingMaskIntoConstraints="NO" id="Q54-wc-3yq">
-                                <rect key="frame" x="0.0" y="0.0" width="218" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="283" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="986-Kb-qXe"/>
-                                    <constraint firstAttribute="height" constant="300" id="c4S-Lr-5Na"/>
+                                    <constraint firstAttribute="height" constant="300" id="gWS-aq-uq1"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Q54-wc-3yq" firstAttribute="top" secondItem="eNT-p2-AdM" secondAttribute="top" id="BNM-8p-dV4"/>
-                            <constraint firstAttribute="trailing" secondItem="Q54-wc-3yq" secondAttribute="trailing" id="LLj-hm-sOZ"/>
-                            <constraint firstItem="Q54-wc-3yq" firstAttribute="leading" secondItem="eNT-p2-AdM" secondAttribute="leading" id="Xfq-Yn-6EH"/>
-                            <constraint firstAttribute="bottom" secondItem="Q54-wc-3yq" secondAttribute="bottom" id="Xlx-bh-W7m"/>
+                            <constraint firstItem="Q54-wc-3yq" firstAttribute="top" secondItem="eNT-p2-AdM" secondAttribute="top" id="5QO-1a-2IG"/>
+                            <constraint firstItem="Q54-wc-3yq" firstAttribute="leading" secondItem="eNT-p2-AdM" secondAttribute="leading" id="haC-Ar-aKe"/>
+                            <constraint firstAttribute="trailing" secondItem="Q54-wc-3yq" secondAttribute="trailing" id="jYb-wK-4aT"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -45,12 +43,12 @@
                 <constraint firstItem="eNT-p2-AdM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="geG-os-E7t"/>
                 <constraint firstAttribute="trailing" secondItem="eNT-p2-AdM" secondAttribute="trailing" id="lQL-ao-YPu"/>
             </constraints>
-            <size key="customSize" width="283" height="355"/>
+            <size key="customSize" width="283" height="407"/>
             <connections>
                 <outlet property="productDetailImg" destination="Q54-wc-3yq" id="voJ-ja-Npj"/>
                 <outlet property="productDetailImgBgView" destination="eNT-p2-AdM" id="6Eo-hp-HCo"/>
             </connections>
-            <point key="canvasLocation" x="255.72519083969465" y="105.98591549295776"/>
+            <point key="canvasLocation" x="255.72519083969465" y="124.29577464788733"/>
         </collectionViewCell>
     </objects>
     <resources>

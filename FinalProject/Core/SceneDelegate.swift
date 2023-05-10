@@ -19,12 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let viewController: UIViewController
         
+        // user condition
         if let currUser = Auth.auth().currentUser {
             print(currUser)
+            // show tabbarcontroller
             viewController = TabBar()
         } else {
+            // show logincontroller
             viewController = UINavigationController(rootViewController: SignInController())
         }
+        
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
         

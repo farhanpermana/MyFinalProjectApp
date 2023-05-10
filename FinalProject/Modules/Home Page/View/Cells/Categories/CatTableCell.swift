@@ -36,7 +36,7 @@ class CatTableCell: UITableViewCell {
         return collectionView
     }()
     
-    func setupLayout() -> UICollectionViewLayout {
+    private func setupLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         
         layout.sectionInset = UIEdgeInsets(top: 1, left: 12, bottom: 1, right: 12)
@@ -48,7 +48,7 @@ class CatTableCell: UITableViewCell {
         return layout
     }
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .clear
         NSLayoutConstraint.activate([
@@ -67,7 +67,7 @@ class CatTableCell: UITableViewCell {
 
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.isScrollEnabled = true
+        collectionView.isScrollEnabled = false
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

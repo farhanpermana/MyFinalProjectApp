@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailItemController" customModule="FinalProject" customModuleProvider="target">
             <connections>
+                <outlet property="addToCartButton" destination="CJX-XR-jDQ" id="w0U-Ct-zYK"/>
                 <outlet property="detailTV" destination="kj4-qL-v2F" id="nL6-q3-9i2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,7 +27,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJX-XR-jDQ">
                     <rect key="frame" x="30" y="783" width="333" height="35"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Buy"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Add to cart"/>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

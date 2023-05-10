@@ -38,7 +38,10 @@ class CatCollectionCell: UICollectionViewCell {
     }
     func configureCell(data: CategoryElement?) {
         catTitle.text = data?.name
-        catImg.kf.setImage(with: URL(string: data?.icon ?? ""))
+        // reduce image for avoid high memory
+        let processor = ResizingImageProcessor(referenceSize: CGSize(width: 100, height: 100))
+        catImg.kf.setImage(with: URL(string: data?.icon ?? ""),options: [.processor(processor)])
+        
     
     }
 

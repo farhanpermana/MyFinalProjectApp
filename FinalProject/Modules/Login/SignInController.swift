@@ -32,7 +32,6 @@ class SignInController: UIViewController {
         signUpBtn.tintColor = UIColor(rgb: 0x75001d)
         forgot.tintColor = UIColor(rgb: 0x75001d)
         
-        
     }
 
 

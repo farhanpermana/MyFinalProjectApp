@@ -33,18 +33,23 @@ class ProfileController: UIViewController {
     }
     
     @objc func logoutBtnTapped(_ sender: Any) {
+        // firebase logout and show dialog
         let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            // disable tabbar
-            self.tabBarController?.tabBar.isHidden = true
-            // move to sign in
-            showSignInController()
+        let alert = UIAlertController(title: "Logout", message: "Are you sure want to logout?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            do {
+                try firebaseAuth.signOut()
+                // hide tabbar
+                self.tabBarController?.tabBar.isHidden = true
+                // move to sign in
+                self.showSignInController()
+            } catch let signOutError as NSError {
+                print("Error signing out: %@", signOutError)
+            }
             
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-        
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
 }
 
@@ -64,17 +69,22 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sections = PageSections(rawValue: indexPath.section)
         switch sections {
+            
         case .profile:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfileSectionTableCell.identifier, for: indexPath) as? ProfileSectionTableCell else { return UITableViewCell() }
+            // action logoutbtntapped
             cell.logoutBtn.addTarget(self, action: #selector(self.logoutBtnTapped(_:)), for: .touchUpInside)
             cell.setupCell()
             return cell
+            
         case .menus:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableCell.identifier, for: indexPath) as? MenuTableCell else { return UITableViewCell() }
             cell.titleLabel.text = menus[indexPath.row]
             cell.setupCell()
             return cell
+            
         default:
+            
             return UITableViewCell()
         }
     }

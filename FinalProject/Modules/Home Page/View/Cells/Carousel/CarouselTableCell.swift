@@ -30,7 +30,7 @@ class CarouselTableCell: UITableViewCell {
         return collectionView
     }()
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),

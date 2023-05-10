@@ -41,7 +41,4 @@ class DescTableCell: UITableViewCell {
         typeLabel.text = data?.type
         priceLabel.text = "$\(data?.discountPrice ?? 0)"
     }
-    
-
-    
 }

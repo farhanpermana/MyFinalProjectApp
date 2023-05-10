@@ -13,7 +13,7 @@ class SaleCollectionTableCell: UITableViewCell {
     
     weak var delegate: PageTransitionDelegate?
     
-    var productViewModel: ProductsViewModel?
+    private var productViewModel: ProductsViewModel?
     var productDatas: ProductsModel?
     
     override func awakeFromNib() {
@@ -36,7 +36,7 @@ class SaleCollectionTableCell: UITableViewCell {
         return collectionView
     }()
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -66,6 +66,7 @@ class SaleCollectionTableCell: UITableViewCell {
                 self.productDatas = listData
                 print("bound products")
             }
+            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }

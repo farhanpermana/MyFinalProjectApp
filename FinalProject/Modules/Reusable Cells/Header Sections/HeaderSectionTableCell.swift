@@ -49,16 +49,18 @@ class HeaderSectionTableCell: UITableViewCell {
         switch section {
         case .browseAllProducts:
             browseAllProductsSection()
+            self.moreBtnFunction = moreBtnFunction
         case .sale:
             saleSection()
             self.moreBtnFunction = moreBtnFunction
         }
     }
     
-    // ibaction
+    // ibaction more btn tapped
     @IBAction func moreBtnTapped(_ sender: Any) {
         self.moreBtnFunction?()
         print("moreBtnTapped clicked")
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -13,7 +13,7 @@ class BrowseAllController: UIViewController {
     
     var browseProductDatas: ProductsModel?
     
-    var browseProductViewModel: ProductsViewModel?
+    private var browseProductViewModel: ProductsViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()

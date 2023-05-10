@@ -13,11 +13,13 @@ class CategoryController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var categoryTitle: UILabel!
     
+    
+    // store the string
     var selectedCategory: String?
     
     var productDatas: ProductsModel?
     
-    var categoryViewModel: CategoryViewModel?
+    private var categoryViewModel: CategoryViewModel?
     
     
     override func viewDidLoad() {
@@ -35,6 +37,7 @@ class CategoryController: UIViewController {
     }
     
     fileprivate func setupApi() {
+        // category: selectedCategory
         self.categoryViewModel = CategoryViewModel(category: selectedCategory ?? "" ,apiServiceProtocol: ApiService())
         self.categoryViewModel?.ProductPerCategoryDataBinding = {
             listModel in

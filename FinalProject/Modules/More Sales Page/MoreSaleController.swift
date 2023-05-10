@@ -12,7 +12,7 @@ class MoreSaleController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var saleProductDatas: ProductsModel?
-    var moreSaleViewModel: ProductsViewModel?
+    private var moreSaleViewModel: ProductsViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +47,7 @@ class MoreSaleController: UIViewController {
 extension MoreSaleController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //MARK: - filtering sale section
         let countProduct = saleProductDatas?.products.filter({ $0.price != $0.discountPrice }) ?? []
         print("more sale all count", countProduct)
         return countProduct.count
@@ -55,6 +56,7 @@ extension MoreSaleController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListsTableCell.identifier, for: indexPath) as? ListsTableCell else { return UITableViewCell() }
+        //MARK: - filtering sale section
         if let productDataItem = saleProductDatas?.products.filter({ $0.price != $0.discountPrice })[indexPath.row] {
             cell.configureSaleProducts(data: productDataItem)
         }

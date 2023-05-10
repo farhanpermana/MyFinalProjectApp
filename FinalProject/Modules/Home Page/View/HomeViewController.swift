@@ -9,6 +9,7 @@ import UIKit
 import SkeletonView
 
 // MARK: - home sections
+// defines a finite set of home sections values
 enum HomeSection: Int {
     case carousel = 0
     case categories = 1
@@ -20,7 +21,7 @@ enum HomeSection: Int {
 
 // MARK: - pagetransition protocol
 protocol PageTransitionDelegate: AnyObject {
-    func moveToMorePage(withTitle title: String?)
+    func moveMoreButton(withTitle title: String?)
     func moveToDetailPage(data: Product?)
     func moveToCategoryPage(selectedCategory: String?)
 }
@@ -33,6 +34,7 @@ class HomeViewController: UIViewController {
     private var catDatas: ProductCategory?
     private var productDatas: ProductsModel?
     
+    // MARK: using weak to avoid memory leak, delegate will be deleted if not needed on memory. delegate tidak akan mempertahankan objek tersebut dalam memory
     weak var delegate: PageTransitionDelegate?
     
     @IBOutlet weak var tableView: UITableView!
@@ -81,7 +83,7 @@ class HomeViewController: UIViewController {
         
     }
     
-    private func setupApi() {
+    fileprivate func setupApi() {
         self.storeViewModel = StoreViewModel(apiService: ApiService())
         self.storeViewModel?.bindListData = {
             listModel in
@@ -134,13 +136,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let section = HomeSection(rawValue: indexPath.section)
         switch section {
             
-            // MARK: - header sections start
+            // MARK: - reusable header sections start
         case .saleTitle:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HeaderSectionTableCell.identifier, for: indexPath) as? HeaderSectionTableCell else {
                 return UITableViewCell()
             }
             cell.setupCell(withSection: .sale) {
-                self.delegate?.moveToMorePage(withTitle: "Sale")
+                self.delegate?.moveMoreButton(withTitle: "Sale")
             }
             cell.delegate = self.delegate
             return cell
@@ -149,7 +151,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.setupCell(withSection: .browseAllProducts) {
-                self.delegate?.moveToMorePage(withTitle: "Browse Products")
+                self.delegate?.moveMoreButton(withTitle: "Browse Products")
             }
             cell.delegate = self.delegate
             return cell
@@ -189,6 +191,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: BrowseProductsTableCell.identifier, for: indexPath) as? BrowseProductsTableCell else {
                 return UITableViewCell()
             }
+            cell.delegate = self
+            cell.browseProductsDatas = productDatas
             cell.setupTable()
             return cell
             
@@ -209,7 +213,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case .sale:
             return 340
         case .browseAllProducts:
-            return 430
+            return 600
             
         default:
             return 0
@@ -220,9 +224,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: PageTransitionDelegate {
     
+    
     func moveToCategoryPage(selectedCategory: String?) {
         let vc = CategoryController()
         vc.hidesBottomBarWhenPushed = true
+        // store category to string selectedCategory
         vc.selectedCategory = selectedCategory
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -239,7 +245,8 @@ extension HomeViewController: PageTransitionDelegate {
         
     }
     
-    func moveToMorePage(withTitle title: String?) {
+    // MARK: - More Button with title
+    func moveMoreButton(withTitle title: String?) {
         switch title {
         case "Sale":
             moveToMoreSalePage(data: productDatas)

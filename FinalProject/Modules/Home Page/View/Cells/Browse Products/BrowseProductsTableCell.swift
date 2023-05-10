@@ -13,7 +13,7 @@ class BrowseProductsTableCell: UITableViewCell {
     
     weak var delegate: PageTransitionDelegate?
     
-    var productViewModel: ProductsViewModel?
+    private var productViewModel: ProductsViewModel?
     var browseProductsDatas: ProductsModel?
     
     override func awakeFromNib() {
@@ -24,15 +24,16 @@ class BrowseProductsTableCell: UITableViewCell {
     private var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        
         layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(UINib(nibName: "ListsCollectionCell", bundle: nil), forCellWithReuseIdentifier: ListsCollectionCell.identifier)
         collectionView.layer.masksToBounds = true
-        
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -60,6 +61,7 @@ class BrowseProductsTableCell: UITableViewCell {
                 self.browseProductsDatas = listData
                 print("bound products")
             }
+            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }

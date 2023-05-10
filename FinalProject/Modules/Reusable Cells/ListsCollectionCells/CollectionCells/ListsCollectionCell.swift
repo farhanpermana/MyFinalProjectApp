@@ -61,7 +61,10 @@ class ListsCollectionCell: UICollectionViewCell {
     
     func configure(data: Product?) {
         afterPrice.textColor = UIColor.red
-        productImg.kf.setImage(with: URL(string: data?.thumbnail ?? ""))
+        // resize image for avoid high memory
+        let processor = ResizingImageProcessor(referenceSize: CGSize(width: 250, height: 250))
+        productImg.kf.setImage(with: URL(string: data?.thumbnail ?? ""),options: [.processor(processor)])
+        
         titleLabel.text = data?.title
         beforePrice.text = "$\(data?.price ?? 0)"
         afterPrice.text = "$\(data?.discountPrice ?? 0)"
@@ -70,7 +73,10 @@ class ListsCollectionCell: UICollectionViewCell {
     }
     
     func configureBrowse(data: Product?) {
-        productImg.kf.setImage(with: URL(string: data?.thumbnail ?? ""))
+        // resize image for avoid high memory
+        let processor = ResizingImageProcessor(referenceSize: CGSize(width: 250, height: 250))
+        productImg.kf.setImage(with: URL(string: data?.thumbnail ?? ""),options: [.processor(processor)])
+        
         titleLabel.text = data?.title
         descLabel.text = data?.description
         
